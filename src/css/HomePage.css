@@ -4,13 +4,13 @@
     color:#fff
 } */
 
-body{
-     /* background: url("../images/web.jpg"); */
+/* body{
+     background: url("../images/web.jpg");
     height: 100vh; 
-    /* background-repeat: no-repeat;
-    background-size:cover;  */
-   background:linear-gradient( #fff, #FC5C7D);
-}
+    background-repeat: no-repeat;
+    background-size:cover; 
+   background:linear-gradient( #d8a9c1, #ecbdc6);
+} */
 
 /* mediaquery */
 /* its good to have background colour then fill in the image for desktop only` */

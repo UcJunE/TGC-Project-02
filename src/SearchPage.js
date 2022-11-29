@@ -38,106 +38,109 @@ export default class SearchPage extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className="container d-flex flex-wrap">
+        <div className="container" id="searchContainer">
           <div className="container">
-            <h5>Product Name</h5>
-            <input
-              name="searchName"
-              type="textbox"
-              className="form-control"
-              id="searchByName"
-              placeholder="Search by Product Name"
-              value={this.state.searchName}
-              onChange={this.updateFormField}
-            />
-          </div>
-          <div className="container mt-3">
-            <h5>Brand</h5>
-            <select
-              className="form-select"
-              name="brand"
-              onChange={this.updateFormField}
-              value={this.state.brand}
-            >
-              <option disabled value="">
-                Select One
-              </option>
-              {this.state.brandName.map((d) => (
-                <option key={d} value={d}>
-                  {d}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="container mt-3">
-            <h5>Type</h5>
-            <div className="form-check form-check-inline">
+            <div className="container">
+              <h5>Product Name</h5>
               <input
-                className="form-check-input"
-                type="radio"
-                name="sortBy"
-                id="natural"
-                value="natural"
-                checked={this.state.sortBy === "natural"}
+                name="searchName"
+                type="textbox"
+                className="form-control"
+                id="searchByName"
+                placeholder="Search by Product Name"
+                value={this.state.searchName}
                 onChange={this.updateFormField}
               />
-              <label className="form-check-label">Natural</label>
             </div>
-            <div className="form-check form-check-inline">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="sortBy"
-                id="synthetic"
-                value="synthetic"
-                checked={this.state.sortBy === "synthetic"}
+            <div className="container mt-3">
+              <h5>Brand</h5>
+              <select
+                className="form-select"
+                name="brand"
                 onChange={this.updateFormField}
-              />
-              <label className="form-check-label">Synthetic</label>
-            </div>
-          </div>
-          <div className="container mt-3">
-            <h5>Scent</h5>
-            <select
-              className="form-select"
-              name="scent"
-              onChange={this.updateFormField}
-              value={this.state.scent}
-            >
-              <option disabled value="">
-                Select One
-              </option>
-              {this.state.searchScent.map((d) => (
-                <option key={d} value={d}>
-                  {d}
+                value={this.state.brand}
+              >
+                <option disabled value="">
+                  Select One
                 </option>
-              ))}
-            </select>
-          </div>
-
-          <div>
-            <button className="mt-3">testing</button>
-          </div>
-          <h1> to show that all Perfume is rendering</h1>
-          {this.state.data.map((r) => (
-            <React.Fragment key={r._id}>
-              <div className="card mt-3 ms-3">
-                <img
-                  src={r.picUrl}
-                  className="card-img-top img-fluid"
-                  alt="ck-one-img"
+                {this.state.brandName.map((d) => (
+                  <option key={d} value={d}>
+                    {d}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="container mt-3">
+              <h5>Type</h5>
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="sortBy"
+                  id="natural"
+                  value="natural"
+                  checked={this.state.sortBy === "natural"}
+                  onChange={this.updateFormField}
                 />
-                <div className="card-body">
-                  <h5 className="card-title">{r.name}</h5>
-                  <p className="card-text">{r.description}</p>
-                  <h6 className="card-text">Price : ${r.price}</h6>
-                  <p className="card-text">Color : {r.color}</p>
-                  <p className="card-text">Scent type : {r.scent}</p>
-                  <p className="card-text">Type : {r.type}</p>
-                </div>
+                <label className="form-check-label">Natural</label>
               </div>
-            </React.Fragment>
-          ))}
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="sortBy"
+                  id="synthetic"
+                  value="synthetic"
+                  checked={this.state.sortBy === "synthetic"}
+                  onChange={this.updateFormField}
+                />
+                <label className="form-check-label">Synthetic</label>
+              </div>
+            </div>
+            <div className="container mt-3">
+              <h5>Scent</h5>
+              <select
+                className="form-select"
+                name="scent"
+                onChange={this.updateFormField}
+                value={this.state.scent}
+              >
+                <option disabled value="">
+                  Select One
+                </option>
+                {this.state.searchScent.map((d) => (
+                  <option key={d} value={d}>
+                    {d}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <button className="mt-3">testing</button>
+            </div>
+          </div>
+          <div className="row">
+            {this.state.data.map((r) => (
+              <React.Fragment key={r._id}>
+                <div className="card mt-3 ms-3 ">
+                  <img
+                    src={r.picUrl}
+                    className="card-img-top img-fluid"
+                    alt="ck-one-img"
+                  />
+                 
+                    <h5 className="card-title">{r.name}</h5>
+                    <p className="card-text">{r.description}</p>
+                    <h6 className="card-text">Price : ${r.price}</h6>
+                    <p className="card-text">Color : {r.color}</p>
+                    <p className="card-text">Scent type : {r.scent}</p>
+                    <p className="card-text">Type : {r.type}</p>
+                  
+                </div>
+              </React.Fragment>
+            ))}
+          </div>
         </div>
       </React.Fragment>
     );

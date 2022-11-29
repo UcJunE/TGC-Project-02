@@ -4,7 +4,8 @@ import SearchPage from "./SearchPage";
 import CreatNewPage from "./CreateNewPage";
 import Profile from "./Profile";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./css/HomePage.css";
+// import "./css/HomePage.css";
+// import "./images/brand.png";
 
 export default class HomePage extends React.Component {
   state = {
@@ -41,7 +42,7 @@ export default class HomePage extends React.Component {
         <nav className="navbar navbar-expand-lg navbar-light">
           <div className="container-fluid">
             <a className="navbar-brand" href="/#">
-              To be decide
+              <img src="./images/brand.png" alt="brand-icon" />
             </a>
             <div className="navbar-nav">
               <a
