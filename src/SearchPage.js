@@ -17,6 +17,8 @@ export default class SearchPage extends React.Component {
     searchScent: ["Citrus", "Cedar", "Romantic"], // just to show client the option of scent itself
     searchEmail: "",
     scent: "",
+    ratingDisplay: [1, 2, 3, 4, 5],
+    rating: 0,
   };
 
   updateFormField = (e) => {
@@ -28,12 +30,29 @@ export default class SearchPage extends React.Component {
   async componentDidMount() {
     try {
       let response = await axios.get(this.BASE_API_URL + "perfume");
-      this.setState({ data: response.data.perfume });
-      console.log(response.data.perfume);
+      this.setState({ data: response.data });
     } catch (e) {
       console.log(e);
     }
   }
+
+  filterSearch = async () => {
+    try {
+      let response = await axios.get(this.BASE_API_URL + "perfume", {
+        params: {
+          name: this.state.searchName,
+          type: this.state.sortBy,
+          scent: this.state.scent,
+        },
+      });
+      this.setState({
+        data: response.data,
+      });
+      console.log(response.data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   render() {
     return (
@@ -115,9 +134,30 @@ export default class SearchPage extends React.Component {
                 ))}
               </select>
             </div>
+            <div className="container mt-3">
+              <h5>Rating</h5>
+              <select
+                className="form-select"
+                name="rating"
+                onChange={this.updateFormField}
+                value={this.state.rating}
+              >
+                <option value="">0</option>
+                {this.state.ratingDisplay.map((d) => (
+                  <option key={d} value={d}>
+                    {d}
+                  </option>
+                ))}
+              </select>
+            </div>
 
             <div>
-              <button className="mt-3">testing</button>
+              <button
+                className="mt-3 btn btn-primary"
+                onClick={this.filterSearch}
+              >
+                Submit
+              </button>
             </div>
           </div>
           <div className="row">
@@ -129,14 +169,13 @@ export default class SearchPage extends React.Component {
                     className="card-img-top img-fluid"
                     alt="ck-one-img"
                   />
-                 
-                    <h5 className="card-title">{r.name}</h5>
-                    <p className="card-text">{r.description}</p>
-                    <h6 className="card-text">Price : ${r.price}</h6>
-                    <p className="card-text">Color : {r.color}</p>
-                    <p className="card-text">Scent type : {r.scent}</p>
-                    <p className="card-text">Type : {r.type}</p>
-                  
+
+                  <h5 className="card-title">{r.name}</h5>
+                  <p className="card-text">{r.description}</p>
+                  <h6 className="card-text">Price : ${r.price}</h6>
+                  <p className="card-text">Color : {r.color}</p>
+                  <p className="card-text">Scent type : {r.scent}</p>
+                  <p className="card-text">Type : {r.type}</p>
                 </div>
               </React.Fragment>
             ))}

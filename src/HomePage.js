@@ -4,8 +4,9 @@ import SearchPage from "./SearchPage";
 import CreatNewPage from "./CreateNewPage";
 import Profile from "./Profile";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import "./css/HomePage.css";
-// import "./images/brand.png";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "./css/HomePage.css";
+import "./images/hp.png";
 
 export default class HomePage extends React.Component {
   state = {
@@ -42,49 +43,71 @@ export default class HomePage extends React.Component {
         <nav className="navbar navbar-expand-lg navbar-light">
           <div className="container-fluid">
             <a className="navbar-brand" href="/#">
-              <img src="./images/brand.png" alt="brand-icon" />
+              <img
+                className="logo"
+                src={require("./images/hp.png")}
+                alt="brand-icon"
+              />
             </a>
-            <div className="navbar-nav">
-              <a
-                className="nav-link active"
-                aria-current="page"
-                href="/#"
-                onClick={() => {
-                  this.switchPage("landingPage");
-                }}
-              >
-                Home
-              </a>
-
-              <a
-                className="nav-link"
-                href="/#"
-                onClick={() => {
-                  this.switchPage("searchPage");
-                }}
-              >
-                Search
-              </a>
-
-              <a
-                className="nav-link"
-                href="/#"
-                onClick={() => {
-                  this.switchPage("createNewPage");
-                }}
-              >
-                Create
-              </a>
-
-              <a
-                className="nav-link"
-                href="/#"
-                onClick={() => {
-                  this.switchPage("profile");
-                }}
-              >
-                Profile
-              </a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a
+                    class="nav-link active nav-text"
+                    aria-current="page"
+                    href="/#"
+                    onClick={() => {
+                      this.switchPage("landingPage");
+                    }}
+                  >
+                    Home
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link nav-text"
+                    href="/#"
+                    onClick={() => {
+                      this.switchPage("searchPage");
+                    }}
+                  >
+                    Search
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link nav-text"
+                    href="/#"
+                    onClick={() => {
+                      this.switchPage("createNewPage");
+                    }}
+                  >
+                    Create
+                  </a>
+                </li>
+                <li class="nav-item nav-text">
+                  <a
+                    href="/#"
+                    class="nav-link"
+                    onClick={() => {
+                      this.switchPage("profile");
+                    }}
+                  >
+                    Profile
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </nav>

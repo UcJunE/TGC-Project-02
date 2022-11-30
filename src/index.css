@@ -13,6 +13,6 @@ code {
     monospace;
 } */
 body{
-  height:100vh;
+  min-height:100vh;
   background:linear-gradient(to right top ,#f6d9d2, #fff,#9283a9);
 }

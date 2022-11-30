@@ -1,5 +1,11 @@
+.logo{
+    width:150px;
+    height:150px;
+}
 
-
+.nav-text{
+    font-size: 1.5rem;
+}
 /* .navbar .navbar-nav .nav-link{
     color:#fff
 } */
