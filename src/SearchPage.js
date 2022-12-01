@@ -18,7 +18,23 @@ export default class SearchPage extends React.Component {
     searchEmail: "",
     scent: "",
     ratingDisplay: [1, 2, 3, 4, 5],
-    rating: 0,
+    rating: "0",
+  };
+
+  updateStar = (n) => {
+    if (n === "1") {
+      return <p> Rating :⭐</p>;
+    } else if (n === "2") {
+      return <p>Rating : ⭐⭐</p>;
+    } else if (n === "3") {
+      return <p>Rating : ⭐⭐⭐</p>;
+    } else if (n === "4") {
+      return <p>Rating : ⭐⭐⭐⭐</p>;
+    } else if (n === "5") {
+      return <p>Rating : ⭐⭐⭐⭐⭐</p>;
+    } else {
+      return <p> Rating : ✰ ✰ ✰ ✰ ✰</p>;
+    }
   };
 
   updateFormField = (e) => {
@@ -43,6 +59,7 @@ export default class SearchPage extends React.Component {
           name: this.state.searchName,
           type: this.state.sortBy,
           scent: this.state.scent,
+          rating: this.state.rating,
         },
       });
       this.setState({
@@ -124,7 +141,7 @@ export default class SearchPage extends React.Component {
                 onChange={this.updateFormField}
                 value={this.state.scent}
               >
-                <option disabled value="">
+                <option value="">
                   Select One
                 </option>
                 {this.state.searchScent.map((d) => (
@@ -142,7 +159,7 @@ export default class SearchPage extends React.Component {
                 onChange={this.updateFormField}
                 value={this.state.rating}
               >
-                <option value="">0</option>
+                <option value="">Select One</option>
                 {this.state.ratingDisplay.map((d) => (
                   <option key={d} value={d}>
                     {d}
@@ -171,11 +188,12 @@ export default class SearchPage extends React.Component {
                   />
 
                   <h5 className="card-title">{r.name}</h5>
-                  <p className="card-text">{r.description}</p>
+                  <p className="card-text">Brand : {r.brand.name}</p>
                   <h6 className="card-text">Price : ${r.price}</h6>
-                  <p className="card-text">Color : {r.color}</p>
+
                   <p className="card-text">Scent type : {r.scent}</p>
                   <p className="card-text">Type : {r.type}</p>
+                  <p className="card-text">{this.updateStar(r.rating)}</p>
                 </div>
               </React.Fragment>
             ))}

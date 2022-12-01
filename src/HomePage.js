@@ -50,7 +50,7 @@ export default class HomePage extends React.Component {
               />
             </a>
             <button
-              class="navbar-toggler"
+              className="navbar-toggler"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarNav"
@@ -58,13 +58,13 @@ export default class HomePage extends React.Component {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span class="navbar-toggler-icon"></span>
+              <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav">
+                <li className="nav-item">
                   <a
-                    class="nav-link active nav-text"
+                    className="nav-link active nav-text"
                     aria-current="page"
                     href="/#"
                     onClick={() => {
@@ -74,9 +74,9 @@ export default class HomePage extends React.Component {
                     Home
                   </a>
                 </li>
-                <li class="nav-item">
+                <li className="nav-item">
                   <a
-                    class="nav-link nav-text"
+                    className="nav-link nav-text"
                     href="/#"
                     onClick={() => {
                       this.switchPage("searchPage");
@@ -85,9 +85,9 @@ export default class HomePage extends React.Component {
                     Search
                   </a>
                 </li>
-                <li class="nav-item">
+                <li className="nav-item">
                   <a
-                    class="nav-link nav-text"
+                    className="nav-link nav-text"
                     href="/#"
                     onClick={() => {
                       this.switchPage("createNewPage");
@@ -96,10 +96,10 @@ export default class HomePage extends React.Component {
                     Create
                   </a>
                 </li>
-                <li class="nav-item nav-text">
+                <li className="nav-item nav-text">
                   <a
                     href="/#"
-                    class="nav-link"
+                    className="nav-link"
                     onClick={() => {
                       this.switchPage("profile");
                     }}
