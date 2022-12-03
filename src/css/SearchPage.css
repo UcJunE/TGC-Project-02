@@ -8,14 +8,7 @@
     
 }
 
-/* .card-img-top {
-    width: fit-content;
-    align-self: center;
-} */
 
-/* .card-body{
-    
-} */
 .card-img, .card-img-top{
 
     /* gives the image a rounded border */
@@ -23,6 +16,14 @@
     border-top-right-radius: var(--bs-card-inner-border-radius); */
     width: 200px;
     align-self: center;
-    border-radius: 30%;
-   
+    border-radius: 30%;   
+}
+
+#search-container{
+    width:50%;
+    
+}
+
+.inputbox{
+    width: 50%;
 }

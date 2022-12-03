@@ -11,10 +11,10 @@ export default class SearchPage extends React.Component {
   state = {
     data: [],
     searchName: "",
-    brandName: ["Givenchy", "Yves Saint Laurent", "Calvin Klein"],
+    brandName: ["Givenchy", "Yves Saint Laurent", "Calvin Klein","Chanel"],
     brand: "",
     sortBy: "natural", // there is 2 type but i set it default to natural
-    searchScent: ["Citrus", "Cedar", "Romantic"], // just to show client the option of scent itself
+    searchScent: ["Citrus", "Cedar", "Romantic","Floral"], // just to show client the option of scent itself
     searchEmail: "",
     scent: "",
     ratingDisplay: [1, 2, 3, 4, 5],
@@ -57,6 +57,7 @@ export default class SearchPage extends React.Component {
       let response = await axios.get(this.BASE_API_URL + "perfume", {
         params: {
           name: this.state.searchName,
+          brand: this.state.brand,
           type: this.state.sortBy,
           scent: this.state.scent,
           rating: this.state.rating,
@@ -74,14 +75,14 @@ export default class SearchPage extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className="container" id="searchContainer">
-          <div className="container">
+        <div className="container">
+          <div className="container" id="search-container">
             <div className="container">
               <h5>Product Name</h5>
               <input
                 name="searchName"
                 type="textbox"
-                className="form-control"
+                className="form-control inputbox"
                 id="searchByName"
                 placeholder="Search by Product Name"
                 value={this.state.searchName}
@@ -91,7 +92,7 @@ export default class SearchPage extends React.Component {
             <div className="container mt-3">
               <h5>Brand</h5>
               <select
-                className="form-select"
+                className="form-select inputbox"
                 name="brand"
                 onChange={this.updateFormField}
                 value={this.state.brand}
@@ -122,7 +123,7 @@ export default class SearchPage extends React.Component {
               </div>
               <div className="form-check form-check-inline">
                 <input
-                  className="form-check-input"
+                  className="form-check-input "
                   type="radio"
                   name="sortBy"
                   id="synthetic"
@@ -136,14 +137,12 @@ export default class SearchPage extends React.Component {
             <div className="container mt-3">
               <h5>Scent</h5>
               <select
-                className="form-select"
+                className="form-select inputbox"
                 name="scent"
                 onChange={this.updateFormField}
                 value={this.state.scent}
               >
-                <option value="">
-                  Select One
-                </option>
+                <option value="">Select One</option>
                 {this.state.searchScent.map((d) => (
                   <option key={d} value={d}>
                     {d}
@@ -154,7 +153,7 @@ export default class SearchPage extends React.Component {
             <div className="container mt-3">
               <h5>Rating</h5>
               <select
-                className="form-select"
+                className="form-select inputbox"
                 name="rating"
                 onChange={this.updateFormField}
                 value={this.state.rating}
@@ -193,7 +192,7 @@ export default class SearchPage extends React.Component {
 
                   <p className="card-text">Scent type : {r.scent}</p>
                   <p className="card-text">Type : {r.type}</p>
-                  <p className="card-text">{this.updateStar(r.rating)}</p>
+                  <h6 className="card-text">{this.updateStar(r.rating)}</h6>
                 </div>
               </React.Fragment>
             ))}

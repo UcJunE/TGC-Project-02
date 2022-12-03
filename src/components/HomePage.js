@@ -1,12 +1,12 @@
 import React from "react";
-import LandingPage from "./LandingPage";
-import SearchPage from "./SearchPage";
-import CreatNewPage from "./CreateNewPage";
-import Profile from "./Profile";
+import LandingPage from "../LandingPage";
+import SearchPage from "../SearchPage";
+import CreatNewPage from "../CreateNewPage";
+import Profile from "../Profile";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import "./css/HomePage.css";
-import "./images/hp.png";
+import "../css/HomePage.css";
+import "../images/hp.png";
 
 export default class HomePage extends React.Component {
   state = {
@@ -45,7 +45,7 @@ export default class HomePage extends React.Component {
             <a className="navbar-brand" href="/#">
               <img
                 className="logo"
-                src={require("./images/hp.png")}
+                src={require("../images/hp.png")}
                 alt="brand-icon"
               />
             </a>
