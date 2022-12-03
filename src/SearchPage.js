@@ -11,14 +11,15 @@ export default class SearchPage extends React.Component {
   state = {
     data: [],
     searchName: "",
-    brandName: ["Givenchy", "Yves Saint Laurent", "Calvin Klein","Chanel"],
+    brandName: ["Givenchy", "Yves Saint Laurent", "Calvin Klein", "Chanel"],
     brand: "",
     sortBy: "natural", // there is 2 type but i set it default to natural
-    searchScent: ["Citrus", "Cedar", "Romantic","Floral"], // just to show client the option of scent itself
+    searchScent: ["Citrus", "Cedar", "Romantic", "Floral"], // just to show client the option of scent itself
     searchEmail: "",
     scent: "",
     ratingDisplay: [1, 2, 3, 4, 5],
     rating: "0",
+    isFilterOpen: false,
   };
 
   updateStar = (n) => {
@@ -72,13 +73,25 @@ export default class SearchPage extends React.Component {
     }
   };
 
+  // to check if the filter button is clicked or no
+  toggleFilter = () => {
+    if (this.state.isFilterOpen) {
+      this.setState({
+        isFilterOpen: false,
+      });
+    } else {
+      this.setState({
+        isFilterOpen: true,
+      });
+    }
+  };
+
   render() {
     return (
       <React.Fragment>
         <div className="container">
           <div className="container" id="search-container">
-            <div className="container">
-              <h5>Product Name</h5>
+            <div className="container  mb-3">
               <input
                 name="searchName"
                 type="textbox"
@@ -88,92 +101,113 @@ export default class SearchPage extends React.Component {
                 value={this.state.searchName}
                 onChange={this.updateFormField}
               />
-            </div>
-            <div className="container mt-3">
-              <h5>Brand</h5>
-              <select
-                className="form-select inputbox"
-                name="brand"
-                onChange={this.updateFormField}
-                value={this.state.brand}
-              >
-                <option disabled value="">
-                  Select One
-                </option>
-                {this.state.brandName.map((d) => (
-                  <option key={d} value={d}>
-                    {d}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="container mt-3">
-              <h5>Type</h5>
-              <div className="form-check form-check-inline">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="sortBy"
-                  id="natural"
-                  value="natural"
-                  checked={this.state.sortBy === "natural"}
-                  onChange={this.updateFormField}
-                />
-                <label className="form-check-label">Natural</label>
-              </div>
-              <div className="form-check form-check-inline">
-                <input
-                  className="form-check-input "
-                  type="radio"
-                  name="sortBy"
-                  id="synthetic"
-                  value="synthetic"
-                  checked={this.state.sortBy === "synthetic"}
-                  onChange={this.updateFormField}
-                />
-                <label className="form-check-label">Synthetic</label>
+              <div>
+                <button
+                  className="btn btn-primary filterBtn"
+                  onClick={this.filterSearch}
+                >
+                  Search
+                </button>
+                <button
+                  className="btn btn-primary filterBtn"
+                  onClick={this.toggleFilter}
+                >
+                  Filter
+                </button>
               </div>
             </div>
-            <div className="container mt-3">
-              <h5>Scent</h5>
-              <select
-                className="form-select inputbox"
-                name="scent"
-                onChange={this.updateFormField}
-                value={this.state.scent}
-              >
-                <option value="">Select One</option>
-                {this.state.searchScent.map((d) => (
-                  <option key={d} value={d}>
-                    {d}
+            <div
+              id="searchFiltersBox"
+              className={
+                this.state.isFilterOpen ? "showFilters" : "hideFilters"
+              }
+            >
+              <div className="container">
+                <h5>Brand</h5>
+                <select
+                  className="form-select inputbox"
+                  name="brand"
+                  onChange={this.updateFormField}
+                  value={this.state.brand}
+                >
+                  <option disabled value="">
+                    Select One
                   </option>
-                ))}
-              </select>
-            </div>
-            <div className="container mt-3">
-              <h5>Rating</h5>
-              <select
-                className="form-select inputbox"
-                name="rating"
-                onChange={this.updateFormField}
-                value={this.state.rating}
-              >
-                <option value="">Select One</option>
-                {this.state.ratingDisplay.map((d) => (
-                  <option key={d} value={d}>
-                    {d}
-                  </option>
-                ))}
-              </select>
-            </div>
+                  {this.state.brandName.map((d) => (
+                    <option key={d} value={d}>
+                      {d}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="container mt-3">
+                <h5>Type</h5>
+                <div className="form-check form-check-inline">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="sortBy"
+                    id="natural"
+                    value="natural"
+                    checked={this.state.sortBy === "natural"}
+                    onChange={this.updateFormField}
+                  />
+                  <label className="form-check-label">Natural</label>
+                </div>
+                <div className="form-check form-check-inline">
+                  <input
+                    className="form-check-input "
+                    type="radio"
+                    name="sortBy"
+                    id="synthetic"
+                    value="synthetic"
+                    checked={this.state.sortBy === "synthetic"}
+                    onChange={this.updateFormField}
+                  />
+                  <label className="form-check-label">Synthetic</label>
+                </div>
+              </div>
+              <div className="container mt-3">
+                <h5>Scent</h5>
+                <select
+                  className="form-select inputbox"
+                  name="scent"
+                  onChange={this.updateFormField}
+                  value={this.state.scent}
+                >
+                  <option value="">Select One</option>
+                  {this.state.searchScent.map((d) => (
+                    <option key={d} value={d}>
+                      {d}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="container mt-3">
+                <h5>Rating</h5>
+                <select
+                  className="form-select inputbox"
+                  name="rating"
+                  onChange={this.updateFormField}
+                  value={this.state.rating}
+                >
+                  <option value="">Select One</option>
+                  {this.state.ratingDisplay.map((d) => (
+                    <option key={d} value={d}>
+                      {d}
+                    </option>
+                  ))}
+                </select>
+              </div>
 
-            <div>
-              <button
-                className="mt-3 btn btn-primary"
-                onClick={this.filterSearch}
-              >
-                Submit
-              </button>
+              <div>
+                <button
+                  className="mt-3 btn btn-primary"
+                  onClick={this.filterSearch}
+                >
+                  Submit
+                </button>
+              </div>
             </div>
           </div>
           <div className="row">
