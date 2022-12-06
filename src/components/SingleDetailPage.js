@@ -1,4 +1,5 @@
 import React from "react";
+import "../css/SingleDetailPage.css";
 
 export default class SingleDetailPage extends React.Component {
   state = {
@@ -30,29 +31,22 @@ export default class SingleDetailPage extends React.Component {
         <div className="row">
           {this.props.detailSearchId.map((r) => (
             <React.Fragment key={r._id}>
-              <div className="card mt-3 ms-3 ">
-                <img
-                  src={r.picUrl}
-                  className="card-img-top img-fluid"
-                  alt="ck-one-img"
-                />
-
-                <h5 className="card-title">{r.name}</h5>
-                <p className="card-text">Brand : {r.brand.name}</p>
-                <h6 className="card-text">Price : ${r.price}</h6>
-
-                <p className="card-text">Scent type : {r.scent}</p>
-                <p className="card-text">Type : {r.type}</p>
-                <h6 className="card-text">{this.updateStar(r.rating)}</h6>
-                <p>{r.yearLaunch}</p>
-                <p>PROBLEM , How to display object .</p>
-                <button
-                  className="container-fluid"
-                  onClick={this.props.changeToCurrentPage}
-                >
-                  Back
-                </button>
+              <div className="container detailImg d-flex justify-content-center">
+                <img src={r.picUrl} alt="perfume-img.jpg"></img>
               </div>
+              <div className="container detailTitle mt-4">
+                <h1>{r.name}</h1>
+                <div id="contentBox" className="container">
+                  
+                </div>
+              </div>
+
+              <button
+                className="container-fluid"
+                onClick={this.props.changeToCurrentPage}
+              >
+                Back
+              </button>
             </React.Fragment>
           ))}
         </div>
