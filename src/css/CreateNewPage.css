@@ -2,7 +2,16 @@
     width: 85%;
     box-shadow: 0 0 30px rgba(0,0,0,0.5);   
 }
-
+@media screen and (min-width:992px){
+    #main-container{width:60% ;}
+}
 .title{
     text-align: center;
+}
+
+
+@media screen and (min-width:992px) {
+    #detail-container{
+    width:76%;
+    } 
 }
