@@ -45,7 +45,7 @@ export default class HomePage extends React.Component {
             <a className="navbar-brand" href="/#">
               <img
                 className="logo"
-                src={require("../images/hp.png")}
+                // src={require("../images/hp.png")}
                 alt="brand-icon"
               />
             </a>
