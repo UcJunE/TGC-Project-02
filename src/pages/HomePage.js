@@ -1,10 +1,10 @@
 import React from "react";
-import LandingPage from "../LandingPage";
-import SearchPage from "../SearchPage";
-import CreatNewPage from "../CreateNewPage";
-import Profile from "../Profile";
+import LandingPage from "./LandingPage";
+import SearchPage from "./SearchPage";
+import CreatNewPage from "./CreateNewPage";
+import Profile from "./ProfilePage";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "bootstrap/dist/js/bootstrap.min.js";
 import "../css/HomePage.css";
 import "../images/hp.png";
 
@@ -64,7 +64,10 @@ export default class HomePage extends React.Component {
               <ul className="navbar-nav">
                 <li className="nav-item">
                   <a
-                    className="nav-link active nav-text"
+                    className={
+                      "nav-link nav-text" +
+                      (this.state.active === "landingPage" ? " active" : "")
+                    }
                     aria-current="page"
                     href="/#"
                     onClick={() => {
@@ -76,7 +79,10 @@ export default class HomePage extends React.Component {
                 </li>
                 <li className="nav-item">
                   <a
-                    className="nav-link nav-text"
+                    className={
+                      "nav-link nav-text" +
+                      (this.state.active === "searchPage" ? " active" : "")
+                    }
                     href="/#"
                     onClick={() => {
                       this.switchPage("searchPage");
@@ -87,7 +93,10 @@ export default class HomePage extends React.Component {
                 </li>
                 <li className="nav-item">
                   <a
-                    className="nav-link nav-text"
+                    className={
+                      "nav-link nav-text" +
+                      (this.state.active === "createNewPage" ? " active" : "")
+                    }
                     href="/#"
                     onClick={() => {
                       this.switchPage("createNewPage");
@@ -99,7 +108,10 @@ export default class HomePage extends React.Component {
                 <li className="nav-item nav-text">
                   <a
                     href="/#"
-                    className="nav-link"
+                    className={
+                      "nav-link nav-text" +
+                      (this.state.active === "profile" ? " active" : "")
+                    }
                     onClick={() => {
                       this.switchPage("profile");
                     }}
