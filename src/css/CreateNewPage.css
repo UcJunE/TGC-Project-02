@@ -15,3 +15,9 @@
     width:76%;
     } 
 }
+
+
+/* all the error msg */
+.err-msg{
+    color:red
+}
