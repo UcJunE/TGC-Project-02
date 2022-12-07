@@ -37,7 +37,21 @@ export default class SingleDetailPage extends React.Component {
               <div className="container detailTitle mt-4">
                 <h1>{r.name}</h1>
                 <div id="contentBox" className="container">
-                  
+                <div className="container">
+                  <p>{r.description}</p>
+                </div>
+                  <div className="container">
+                    {r.ingredient.topNote.join(" , ")}
+                  </div>
+                  <div className="container">
+                    {r.ingredient.middleNote.join(" , ")}
+                  </div>
+                  <div className="container">
+                    {r.ingredient.baseNote.join(" , ")}
+                  </div>
+                  <div className="container">
+                  {r.price}
+                  </div>
                 </div>
               </div>
 

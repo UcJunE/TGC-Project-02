@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import SuccessAdded from "../components/SuccessAdded";
 import "../css/CreateNewPage.css";
 
 export default class CreatNewPage extends React.Component {
@@ -36,13 +37,17 @@ export default class CreatNewPage extends React.Component {
     showUserNameError: false,
     showUserEmaiError: false,
     //to close it after add
-    showProcessAddNew: false,
+    successAdded: false,
   };
 
   updateFormField = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
     });
+  };
+
+  closeSuccessAdded = () => {
+    this.setState({ successAdded: false });
   };
 
   addNewSubmit = async () => {
@@ -155,7 +160,7 @@ export default class CreatNewPage extends React.Component {
         userName: this.state.userName,
         userEmail: this.state.userEmail,
       };
-      alert("hello");
+
       try {
         let response = await axios.post(this.BASE_API_URL + "add-perfume", {
           name: this.state.name,
@@ -174,47 +179,51 @@ export default class CreatNewPage extends React.Component {
       } catch (e) {
         console.log(e);
       }
-      this.setState({ showProcessAddNew: true });
+      this.setState({ successAdded: true });
     }
   };
 
   render() {
     return (
       <React.Fragment>
-        <div className="container" id="main-container">
+        <div className="container py-3" id="main-container">
           <div className="container" id="detail-container">
-            <div className="container mt-3 pt-4">
-              <h3 className="title">New Perfume</h3>
-              <div className="container mt-3">
-                <input
-                  name="name"
-                  type="text"
-                  className="form-control"
-                  placeholder="Perfume Name"
-                  value={this.state.name}
-                  onChange={this.updateFormField}
-                />
-                {this.state.showNameError ? (
-                  <p className="err-msg">Please enter a perfume name</p>
-                ) : (
-                  ""
-                )}
-                <h3>Brand</h3>
-                <input
-                  name="brand"
-                  type="text"
-                  className="form-control"
-                  placeholder="Brand Name"
-                  value={this.state.brand}
-                  onChange={this.updateFormField}
-                />
-                {this.state.showBrandError ? (
-                  <p className="err-msg">Please enter a brand name</p>
-                ) : (
-                  ""
-                )}
-              </div>
+            <div className="container mt-3 py-4">
+              <h3 className="container title">Tell Us About Your Perfume </h3>
             </div>
+            <div className="container mt-3">
+              <h3>Perfume Name</h3>
+              <input
+                name="name"
+                type="text"
+                className="form-control"
+                placeholder="Perfume Name"
+                value={this.state.name}
+                onChange={this.updateFormField}
+              />
+              {this.state.showNameError ? (
+                <p className="err-msg">Please enter a perfume name</p>
+              ) : (
+                ""
+              )}
+            </div>
+            <div className="container">
+              <h3>Brand</h3>
+              <input
+                name="brand"
+                type="text"
+                className="form-control"
+                placeholder="Brand Name"
+                value={this.state.brand}
+                onChange={this.updateFormField}
+              />
+              {this.state.showBrandError ? (
+                <p className="err-msg">Please enter a brand name</p>
+              ) : (
+                ""
+              )}
+            </div>
+
             <div className="container mt-3" id="desc-container">
               <h4>Description</h4>
               <textarea
@@ -288,7 +297,7 @@ export default class CreatNewPage extends React.Component {
                 placeholder="Enter image URL"
                 name="imageURL"
                 type="text"
-                class="form-control"
+                className="form-control"
                 value={this.state.imageURL}
                 onChange={this.updateFormField}
               ></input>
@@ -326,18 +335,19 @@ export default class CreatNewPage extends React.Component {
             </div>
 
             <div
-              className="container mt-3  d-flex"
+              className="container mt-3  d-flex flex-column"
               id="ingredient-container-top"
             >
+              <h6>Top Note</h6>
               <input
                 name="topNote"
                 type="text"
                 className="form-control"
                 value={this.state.topNote}
                 onChange={this.updateFormField}
-                placeholder="Top Note Ingredient"
+                placeholder="Seperate each ingredient with comma "
               />
-              <button className="btn">
+              {/* <button className="btn">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="25"
@@ -349,7 +359,7 @@ export default class CreatNewPage extends React.Component {
                   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
                   <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
                 </svg>
-              </button>
+              </button> */}
               {this.state.showTopNoteError ? (
                 <p className="err-msg">Please do not leave it blank</p>
               ) : (
@@ -357,18 +367,19 @@ export default class CreatNewPage extends React.Component {
               )}
             </div>
             <div
-              className="container mt-3  d-flex"
+              className="container mt-3  d-flex flex-column"
               id="ingredient-container-mid"
             >
+              <h6>Middle Note</h6>
               <input
                 name="middleNote"
                 type="text"
                 className="form-control"
                 value={this.state.middleNote}
                 onChange={this.updateFormField}
-                placeholder="Middle Note Ingredient"
+                placeholder="Seperate each ingredient with comma "
               />
-              <button className="btn">
+              {/* <button className="btn">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="25"
@@ -380,7 +391,7 @@ export default class CreatNewPage extends React.Component {
                   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
                   <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
                 </svg>
-              </button>
+              </button> */}
               {this.state.showMiddleNoteError ? (
                 <p className="err-msg">Please do not leave it blank</p>
               ) : (
@@ -388,18 +399,19 @@ export default class CreatNewPage extends React.Component {
               )}
             </div>
             <div
-              className="container mt-3  d-flex"
+              className="container mt-3  d-flex flex-column"
               id="ingredient-container-base"
             >
+              <h6>Base Note</h6>
               <input
                 name="baseNote"
                 type="text"
                 className="form-control"
                 value={this.state.baseNote}
                 onChange={this.updateFormField}
-                placeholder="Base Note Ingredient"
+                placeholder="Seperate each ingredient with comma "
               />
-              <button className="btn">
+              {/* <button className="btn">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="25"
@@ -411,7 +423,7 @@ export default class CreatNewPage extends React.Component {
                   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
                   <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
                 </svg>
-              </button>
+              </button> */}
               {this.state.showBaseNoteError ? (
                 <p className="err-msg">Please do not leave it blank</p>
               ) : (
@@ -463,6 +475,10 @@ export default class CreatNewPage extends React.Component {
             </div>
           </div>
         </div>
+        <SuccessAdded
+          successAdded={this.state.successAdded}
+          closeSuccessAdded={this.closeSuccessAdded}
+        />
       </React.Fragment>
     );
   }
