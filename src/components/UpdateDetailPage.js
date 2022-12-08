@@ -1,7 +1,26 @@
 import React from "react";
+import axios from "axios";
+import SuccessAdded from "../components/SuccessAdded";
 
 export default class UpdateDetailPage extends React.Component {
   state = {
+    data: [],
+    updateCurrentId: "",
+    updateName: "",
+    updateBrand: "",
+    updateNewDescription: "",
+    updateType: "",
+    updateYear: "",
+    updatePrice: "",
+    updateImageURL: "",
+    updateScent: "select one",
+    updateTopNote: "",
+    updateMiddleNote: "",
+    updateBaseNote: "",
+    updateUserName: "",
+    updateUserEmail: "",
+    createdBy: {},
+    displayScent: ["Citrus", "Cedar", "Romantic", "Floral"],
     //validation part
     showNameError: false,
     showBrandError: false,
@@ -15,12 +34,351 @@ export default class UpdateDetailPage extends React.Component {
     showBaseNoteError: false,
     showUserNameError: false,
     showUserEmaiError: false,
+
+    successAdded: false,
+  };
+
+  componentDidMount = () => {
+    let currentId = this.props.foundResult._id;
+    let name = this.props.foundResult.name;
+    let brand = this.props.foundResult.brand.name;
+    let newDescription = this.props.foundResult.description;
+    let type = this.props.foundResult.type;
+    let year = this.props.foundResult.yearLaunch;
+    let price = this.props.foundResult.price;
+    let imageURL = this.props.foundResult.picUrl;
+    let scent = this.props.foundResult.scent;
+    let topNote = this.props.foundResult.ingredient.topNote;
+    let middleNote = this.props.foundResult.ingredient.middleNote;
+    let baseNote = this.props.foundResult.ingredient.baseNote;
+    let userName = this.props.foundResult.createdBy.userName;
+    let userEmail = this.props.foundResult.createdBy.userEmail;
+
+    this.setState({
+      updateCurrentId: currentId,
+      updateName: name,
+      updateBrand: brand,
+      updateNewDescription: newDescription,
+      updateType: type,
+      updateYear: year,
+      updatePrice: price,
+      updateImageURL: imageURL,
+      updateScent: scent,
+      updateTopNote: topNote,
+      updateMiddleNote: middleNote,
+      updateBaseNote: baseNote,
+      updateUserName: userName,
+      updateUserEmail: userEmail,
+    });
+  };
+
+  updateFormField = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   render() {
     return (
       <React.Fragment>
-        <h1>Hello from update</h1>
+        <div className="container py-3" id="main-container">
+        <button
+                className="btn btn-outline-dark"
+                onClick={this.props.changeToShowDetailPage}
+              >
+                Back
+              </button>
+          <div className="container" id="detail-container">
+            <div className="container mt-3 py-4">
+              <h3 className="container title">Update Your Perfume </h3>
+            </div>
+            <div className="container mt-3">
+              <h3>Perfume Name</h3>
+              <input
+                name="updateName"
+                type="text"
+                className="form-control"
+                placeholder="Perfume Name"
+                value={this.state.updateName}
+                onChange={this.updateFormField}
+              />
+              {this.state.showNameError ? (
+                <p className="err-msg">Please enter a perfume name</p>
+              ) : (
+                ""
+              )}
+            </div>
+            <div className="container">
+              <h3>Brand</h3>
+              <input
+                name="updateBrand"
+                type="text"
+                className="form-control"
+                placeholder="Brand Name"
+                value={this.state.updateBrand}
+                onChange={this.updateFormField}
+              />
+              {this.state.showBrandError ? (
+                <p className="err-msg">Please enter a brand name</p>
+              ) : (
+                ""
+              )}
+            </div>
+
+            <div className="container mt-3" id="desc-container">
+              <h4>Description</h4>
+              <textarea
+                rows="3"
+                name="updateNewDescription"
+                type="text"
+                className="form-control "
+                placeholder="Description of the perfume"
+                value={this.state.updateNewDescription}
+                onChange={this.updateFormField}
+              ></textarea>
+              {this.state.showDescriptionError ? (
+                <p className="err-msg">Please describe your perfume</p>
+              ) : (
+                ""
+              )}
+            </div>
+            <div className="container mt-3" id="type-container">
+              <h4>Type</h4>
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="updateType"
+                  id="natural"
+                  value="natural"
+                  checked={this.state.updateType === "Natural"}
+                  onChange={this.updateFormField}
+                />
+
+                <label className="form-check-label">Natural</label>
+              </div>
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input "
+                  type="radio"
+                  name="updateType"
+                  id="synthetic"
+                  value="synthetic"
+                  checked={this.state.updateType === "Synthetic"}
+                  onChange={this.updateFormField}
+                />
+
+                <label className="form-check-label">Synthetic</label>
+              </div>
+              {this.state.showTypeError ? (
+                <p className="err-msg">Please select either one</p>
+              ) : (
+                ""
+              )}
+            </div>
+            <div className="container mt-3">
+              <h4>Year Launch</h4>
+              <input
+                name="updateYear"
+                type="text"
+                className="form-control"
+                placeholder="Integer Only"
+                value={this.state.updateYear}
+                onChange={this.updateFormField}
+              />
+              {this.state.showYearError ? (
+                <p className="err-msg">Please enter only number</p>
+              ) : (
+                ""
+              )}
+            </div>
+            <div className="container mt-3">
+              <h4>Image URL</h4>
+              <input
+                placeholder="Enter image URL"
+                name="updateImageURL"
+                type="text"
+                className="form-control"
+                value={this.state.updateImageURL}
+                onChange={this.updateFormField}
+              ></input>
+              {this.state.showImgError ? (
+                <p className="err-msg">Please enter valid URL</p>
+              ) : (
+                ""
+              )}
+            </div>
+            <div className="container mt-3" id="scent-container">
+              <h4>Scent</h4>
+              <select
+                className="form-select inputbox"
+                name="updateScent"
+                selected
+                onChange={this.updateFormField}
+                value={this.state.updateScent}
+              >
+                <option value="">Select One</option>
+                {this.state.displayScent.map((d) => (
+                  <option key={d} value={d}>
+                    {d}
+                  </option>
+                ))}
+              </select>
+              {this.state.showScentError ? (
+                <p className="err-msg">Please select at least 1 </p>
+              ) : (
+                ""
+              )}
+            </div>
+
+            <div className="container mt-3">
+              <h4>Ingredient</h4>
+            </div>
+
+            <div
+              className="container mt-3  d-flex flex-column"
+              id="ingredient-container-top"
+            >
+              <h6>Top Note</h6>
+              <input
+                name="updateTopNote"
+                type="text"
+                className="form-control"
+                value={this.state.updateTopNote}
+                onChange={this.updateFormField}
+                placeholder="Seperate each ingredient with comma "
+              />
+              {/* <button className="btn">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="50"
+                  fill="currentColor"
+                  className="bi bi-plus-circle"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
+                </svg>
+              </button> */}
+              {this.state.showTopNoteError ? (
+                <p className="err-msg">Please do not leave it blank</p>
+              ) : (
+                ""
+              )}
+            </div>
+            <div
+              className="container mt-3  d-flex flex-column"
+              id="ingredient-container-mid"
+            >
+              <h6>Middle Note</h6>
+              <input
+                name="updateMiddleNote"
+                type="text"
+                className="form-control"
+                value={this.state.updateMiddleNote}
+                onChange={this.updateFormField}
+                placeholder="Seperate each ingredient with comma "
+              />
+              {/* <button className="btn">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="50"
+                  fill="currentColor"
+                  className="bi bi-plus-circle"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
+                </svg>
+              </button> */}
+              {this.state.showMiddleNoteError ? (
+                <p className="err-msg">Please do not leave it blank</p>
+              ) : (
+                ""
+              )}
+            </div>
+            <div
+              className="container mt-3  d-flex flex-column"
+              id="ingredient-container-base"
+            >
+              <h6>Base Note</h6>
+              <input
+                name="updateBaseNote"
+                type="text"
+                className="form-control"
+                value={this.state.updateBaseNote}
+                onChange={this.updateFormField}
+                placeholder="Seperate each ingredient with comma "
+              />
+              {/* <button className="btn">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="50"
+                  fill="currentColor"
+                  className="bi bi-plus-circle"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
+                </svg>
+              </button> */}
+              {this.state.showBaseNoteError ? (
+                <p className="err-msg">Please do not leave it blank</p>
+              ) : (
+                ""
+              )}
+            </div>
+            <div className="container mt-3">
+              <h4>Created By</h4>
+              <div className="container" id="user-container">
+                <input
+                  name="updateUserName"
+                  type="text"
+                  className="form-control mt-2"
+                  placeholder="User Name"
+                  value={this.state.updateUserName}
+                  onChange={this.updateFormField}
+                ></input>
+                {this.state.showUserNameError ? (
+                  <p className="err-msg">Please provide a username</p>
+                ) : (
+                  ""
+                )}
+              </div>
+              <div className="container" id="email-container">
+                <input
+                  name="updateUserEmail"
+                  type="text"
+                  className="form-control mt-2"
+                  placeholder="Email"
+                  value={this.state.updateUserEmail}
+                  onChange={this.updateFormField}
+                />
+                {this.state.showUserEmaiError ? (
+                  <p className="err-msg">
+                    Please provide a valid email address
+                  </p>
+                ) : (
+                  ""
+                )}
+              </div>
+            </div>
+            <div className="container mt-4 mb-4 pb-4  ">
+              <button
+                className="btn btn-outline-dark"
+                onClick={this.addNewSubmit}
+              >
+                Update
+              </button>
+            
+            </div>
+          </div>
+        </div>
+        <SuccessAdded
+          successAdded={this.state.successAdded}
+          closeSuccessAdded={this.closeSuccessAdded}
+        />
       </React.Fragment>
     );
   }

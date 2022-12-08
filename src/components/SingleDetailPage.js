@@ -27,7 +27,6 @@ export default class SingleDetailPage extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h1>Hello from detail post</h1>
         <div className="row">
           {this.props.detailSearchId.map((r) => (
             <React.Fragment key={r._id}>
