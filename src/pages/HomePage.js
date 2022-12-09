@@ -41,11 +41,11 @@ export default class HomePage extends React.Component {
     return (
       <React.Fragment>
         <nav className="navbar navbar-expand-lg navbar-light">
-          <div className="container-fluid">
+          <div className="container-fluid mb-5">
             <a className="navbar-brand" href="/#">
               <img
                 className="logo"
-                // src={require("../images/hp.png")}
+                src={require("../images/hp.png")}
                 alt="brand-icon"
               />
             </a>

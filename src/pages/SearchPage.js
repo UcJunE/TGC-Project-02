@@ -15,7 +15,7 @@ export default class SearchPage extends React.Component {
     searchName: "",
     brandName: ["Givenchy", "Yves Saint Laurent", "Calvin Klein", "Chanel"],
     brand: "",
-    sortBy: "natural", // there is 2 type but i set it default to natural
+    sortBy: "Natural", // there is 2 type but i set it default to natural
     searchScent: ["Citrus", "Cedar", "Romantic", "Floral"], // just to show client the option of scent itself
     searchEmail: "",
     scent: "",
@@ -219,8 +219,8 @@ export default class SearchPage extends React.Component {
                       type="radio"
                       name="sortBy"
                       id="natural"
-                      value="natural"
-                      checked={this.state.sortBy === "natural"}
+                      value="Natural"
+                      checked={this.state.sortBy === "Natural"}
                       onChange={this.updateFormField}
                     />
                     <label className="form-check-label">Natural</label>
@@ -231,8 +231,8 @@ export default class SearchPage extends React.Component {
                       type="radio"
                       name="sortBy"
                       id="synthetic"
-                      value="synthetic"
-                      checked={this.state.sortBy === "synthetic"}
+                      value="Synthetic"
+                      checked={this.state.sortBy === "Synthetic"}
                       onChange={this.updateFormField}
                     />
                     <label className="form-check-label">Synthetic</label>
@@ -298,7 +298,6 @@ export default class SearchPage extends React.Component {
 
                     <h5 className="card-title">{r.name}</h5>
                     <p className="card-text">Brand : {r.brand.name}</p>
-                    <h6 className="card-text">Price : ${r.price}</h6>
 
                     <p className="card-text">Scent type : {r.scent}</p>
                     <p className="card-text">Type : {r.type}</p>

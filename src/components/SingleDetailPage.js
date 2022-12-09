@@ -27,7 +27,6 @@ export default class SingleDetailPage extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h1>Hello from detail post</h1>
         <div className="row">
           {this.props.detailSearchId.map((r) => (
             <React.Fragment key={r._id}>
@@ -37,7 +36,21 @@ export default class SingleDetailPage extends React.Component {
               <div className="container detailTitle mt-4">
                 <h1>{r.name}</h1>
                 <div id="contentBox" className="container">
-                  
+                <div className="container">
+                  <p>{r.description}</p>
+                </div>
+                  <div className="container">
+                    {r.ingredient.topNote.join(" , ")}
+                  </div>
+                  <div className="container">
+                    {r.ingredient.middleNote.join(" , ")}
+                  </div>
+                  <div className="container">
+                    {r.ingredient.baseNote.join(" , ")}
+                  </div>
+                  <div className="container">
+                  {r.price}
+                  </div>
                 </div>
               </div>
 

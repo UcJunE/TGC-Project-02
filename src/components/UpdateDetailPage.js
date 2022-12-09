@@ -1,26 +1,26 @@
 import React from "react";
 import axios from "axios";
 import SuccessAdded from "../components/SuccessAdded";
-import "../css/CreateNewPage.css";
+// import "../css/SuccessAdded.css";
 
-export default class CreatNewPage extends React.Component {
+export default class UpdateDetailPage extends React.Component {
   BASE_API_URL = "http://localhost:8888/";
-
   state = {
     data: [],
-    name: "",
-    brand: "",
-    newDescription: "",
-    type: "",
-    year: "",
-    price: "",
-    imageURL: "",
-    scent: "select one",
-    topNote: "",
-    middleNote: "",
-    baseNote: "",
-    userName: "",
-    userEmail: "",
+    updateCurrentId: "",
+    updateName: "",
+    updateBrand: "",
+    updateNewDescription: "",
+    updateType: "",
+    updateYear: "",
+    updatePrice: "",
+    updateImageURL: "",
+    updateScent: "select one",
+    updateTopNote: "",
+    updateMiddleNote: "",
+    updateBaseNote: "",
+    updateUserName: "",
+    updateUserEmail: "",
     createdBy: {},
     displayScent: ["Citrus", "Cedar", "Romantic", "Floral"],
     //validation part
@@ -36,92 +36,127 @@ export default class CreatNewPage extends React.Component {
     showBaseNoteError: false,
     showUserNameError: false,
     showUserEmaiError: false,
-    //to close it after add
+
     successAdded: false,
   };
 
-  updateFormField = (e) => {
+  componentDidMount = () => {
+    let currentId = this.props.foundResult._id;
+    let name = this.props.foundResult.name;
+    let brand = this.props.foundResult.brand;
+    let newDescription = this.props.foundResult.description;
+    let type = this.props.foundResult.type;
+    let year = this.props.foundResult.yearLaunch;
+    let price = this.props.foundResult.price;
+    let imageURL = this.props.foundResult.picUrl;
+    let scent = this.props.foundResult.scent;
+    let topNote = this.props.foundResult.ingredient.topNote;
+    let middleNote = this.props.foundResult.ingredient.middleNote;
+    let baseNote = this.props.foundResult.ingredient.baseNote;
+    let userName = this.props.foundResult.createdBy.userName;
+    let userEmail = this.props.foundResult.createdBy.userEmail;
+
     this.setState({
-      [e.target.name]: e.target.value,
+      updateCurrentId: currentId,
+      updateName: name,
+      updateBrand: brand,
+      updateNewDescription: newDescription,
+      updateType: type,
+      updateYear: year,
+      updatePrice: price,
+      updateImageURL: imageURL,
+      updateScent: scent,
+      updateTopNote: topNote,
+      updateMiddleNote: middleNote,
+      updateBaseNote: baseNote,
+      updateUserName: userName,
+      updateUserEmail: userEmail,
     });
+  };
+
+  updateFormField = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   closeSuccessAdded = () => {
     this.setState({ successAdded: false });
   };
 
-  addNewSubmit = async () => {
+  submitUpdate = async () => {
     //check for name
-    if (!this.state.name || this.state.name.length > 50) {
+    if (!this.state.updateName || this.state.updateName.length > 50) {
       this.setState({ showNameError: true });
     } else {
       this.setState({ showNameError: false });
     }
 
     //check for brand
-    if (!this.state.brand || this.state.brand.length > 50) {
+    if (!this.state.updateBrand || this.state.updateBrand.length > 50) {
       this.setState({ showBrandError: true });
     } else {
       this.setState({ showBrandError: false });
     }
 
     //check for description
-    if (!this.state.newDescription || this.state.newDescription > 200) {
+    if (
+      !this.state.updateNewDescription ||
+      this.state.updateNewDescription > 200
+    ) {
       this.setState({ showDescriptionError: true });
     } else {
       this.setState({ showDescriptionError: false });
     }
 
     //check for type
-    if (!this.state.type) {
+    if (!this.state.updateType) {
       this.setState({ showTypeError: true });
     } else {
       this.setState({ showTypeError: false });
     }
 
     //check for year
-    if (!this.state.year) {
+    if (!this.state.updateYear) {
       this.setState({ showYearError: true });
     } else {
       this.setState({ showYearError: false });
     }
 
     //check for image url
-    if (!this.state.imageURL) {
+    if (!this.state.updateImageURL) {
       this.setState({ showImgError: true });
     } else {
       this.setState({ showImgError: false });
     }
 
     //check for scent
-    if (this.state.scent) {
+    if (this.state.updateScent) {
       this.setState({ showScentError: false });
     } else {
       this.setState({ showScentError: true });
     }
 
     //check for ingredient topnote
-    if (!this.state.topNote) {
+    if (!this.state.updateTopNote) {
       this.setState({ showTopNoteError: true });
     } else {
       this.setState({ showTopNoteError: false });
     }
 
     //check for middlenote
-    if (!this.state.middleNote) {
+    if (!this.state.updateMiddleNote) {
       this.setState({ showMiddleNoteError: true });
     } else {
       this.setState({ showMiddleNoteError: false });
     }
     //check for base note
-    if (!this.state.baseNote) {
+    if (!this.state.updateBaseNote) {
       this.setState({ showBaseNoteError: true });
     } else {
       this.setState({ showBaseNoteError: false });
     }
 
     //check for username
-    if (!this.state.userName) {
+    if (!this.state.updateUserName) {
       this.setState({ showUserNameError: true });
     } else {
       this.setState({ showUserNameError: false });
@@ -129,8 +164,8 @@ export default class CreatNewPage extends React.Component {
 
     //check for email
     if (
-      this.state.userEmail.includes("@") &&
-      this.state.userEmail.includes(".")
+      this.state.updateUserEmail.includes("@") &&
+      this.state.updateUserEmail.includes(".")
     ) {
       this.setState({
         showUserEmaiError: false,
@@ -143,38 +178,41 @@ export default class CreatNewPage extends React.Component {
 
     // each field validation done . next . posting data to backend, check if all field is valid then only insert
     if (
-      this.state.name &&
-      this.state.brand &&
-      this.state.newDescription &&
-      this.state.type &&
-      this.state.year &&
-      this.state.imageURL &&
-      this.state.scent &&
-      this.state.topNote &&
-      this.state.middleNote &&
-      this.state.baseNote &&
-      this.state.userName &&
-      this.state.userEmail
+      this.state.updateName &&
+      this.state.updateBrand &&
+      this.state.updateNewDescription &&
+      this.state.updateType &&
+      this.state.updateYear &&
+      this.state.updateImageURL &&
+      this.state.updateScent &&
+      this.state.updateTopNote &&
+      this.state.updateMiddleNote &&
+      this.state.updateBaseNote &&
+      this.state.updateUserName &&
+      this.state.updateUserEmail
     ) {
       let createdBy = {
-        userName: this.state.userName,
-        userEmail: this.state.userEmail,
+        userName: this.state.updateUserName,
+        userEmail: this.state.updateUserEmail,
       };
 
       try {
-        let response = await axios.post(this.BASE_API_URL + "add-perfume", {
-          name: this.state.name,
-          description: this.state.newDescription,
-          type: this.state.type,
-          yearLaunch: this.state.year,
-          picUrl: this.state.imageURL,
-          scent: this.state.scent,
-          createdBy: createdBy,
-          brand: this.state.brand,
-          topNote: this.state.topNote,
-          middleNote: this.state.middleNote,
-          baseNote: this.state.baseNote,
-        });
+        let response = await axios.put(
+          this.BASE_API_URL + "update-perfume/" + this.state.updateCurrentId,
+          {
+            name: this.state.updateName,
+            description: this.state.updateNewDescription,
+            type: this.state.updateType,
+            yearLaunch: this.state.updateYear,
+            picUrl: this.state.updateImageURL,
+            scent: this.state.updateScent,
+            createdBy: createdBy,
+            brand: this.state.updateBrand,
+            topNote: this.state.updateTopNote,
+            middleNote: this.state.updateMiddleNote,
+            baseNote: this.state.updateBaseNote,
+          }
+        );
         console.log(response);
       } catch (e) {
         console.log(e);
@@ -187,18 +225,27 @@ export default class CreatNewPage extends React.Component {
     return (
       <React.Fragment>
         <div className="container py-3" id="main-container">
+          <button
+            className="btn btn-outline-dark"
+            onClick={() => {
+              this.props.changeToShowDetailPage(this.state.updateCurrentId);
+              this.props.refreshSearchResult();
+            }}
+          >
+            Back
+          </button>
           <div className="container" id="detail-container">
             <div className="container mt-3 py-4">
-              <h3 className="container title">Tell Us About Your Perfume </h3>
+              <h3 className="container title">Update Your Perfume </h3>
             </div>
             <div className="container mt-3">
               <h3>Perfume Name</h3>
               <input
-                name="name"
+                name="updateName"
                 type="text"
                 className="form-control"
                 placeholder="Perfume Name"
-                value={this.state.name}
+                value={this.state.updateName}
                 onChange={this.updateFormField}
               />
               {this.state.showNameError ? (
@@ -210,11 +257,11 @@ export default class CreatNewPage extends React.Component {
             <div className="container">
               <h3>Brand</h3>
               <input
-                name="brand"
+                name="updateBrand"
                 type="text"
                 className="form-control"
                 placeholder="Brand Name"
-                value={this.state.brand}
+                value={this.state.updateBrand}
                 onChange={this.updateFormField}
               />
               {this.state.showBrandError ? (
@@ -228,11 +275,11 @@ export default class CreatNewPage extends React.Component {
               <h4>Description</h4>
               <textarea
                 rows="3"
-                name="newDescription"
+                name="updateNewDescription"
                 type="text"
                 className="form-control "
                 placeholder="Description of the perfume"
-                value={this.state.newDescription}
+                value={this.state.updateNewDescription}
                 onChange={this.updateFormField}
               ></textarea>
               {this.state.showDescriptionError ? (
@@ -247,10 +294,10 @@ export default class CreatNewPage extends React.Component {
                 <input
                   className="form-check-input"
                   type="radio"
-                  name="type"
+                  name="updateType"
                   id="natural"
                   value="natural"
-                  checked={this.state.type === "natural"}
+                  checked={this.state.updateType === "Natural"}
                   onChange={this.updateFormField}
                 />
 
@@ -260,10 +307,10 @@ export default class CreatNewPage extends React.Component {
                 <input
                   className="form-check-input "
                   type="radio"
-                  name="type"
+                  name="updateType"
                   id="synthetic"
                   value="synthetic"
-                  checked={this.state.type === "synthetic"}
+                  checked={this.state.updateType === "Synthetic"}
                   onChange={this.updateFormField}
                 />
 
@@ -278,11 +325,11 @@ export default class CreatNewPage extends React.Component {
             <div className="container mt-3">
               <h4>Year Launch</h4>
               <input
-                name="year"
+                name="updateYear"
                 type="text"
                 className="form-control"
                 placeholder="Integer Only"
-                value={this.state.year}
+                value={this.state.updateYear}
                 onChange={this.updateFormField}
               />
               {this.state.showYearError ? (
@@ -295,10 +342,10 @@ export default class CreatNewPage extends React.Component {
               <h4>Image URL</h4>
               <input
                 placeholder="Enter image URL"
-                name="imageURL"
+                name="updateImageURL"
                 type="text"
                 className="form-control"
-                value={this.state.imageURL}
+                value={this.state.updateImageURL}
                 onChange={this.updateFormField}
               ></input>
               {this.state.showImgError ? (
@@ -311,10 +358,10 @@ export default class CreatNewPage extends React.Component {
               <h4>Scent</h4>
               <select
                 className="form-select inputbox"
-                name="scent"
+                name="updateScent"
                 selected
                 onChange={this.updateFormField}
-                value={this.state.scent}
+                value={this.state.updateScent}
               >
                 <option value="">Select One</option>
                 {this.state.displayScent.map((d) => (
@@ -340,10 +387,10 @@ export default class CreatNewPage extends React.Component {
             >
               <h6>Top Note</h6>
               <input
-                name="topNote"
+                name="updateTopNote"
                 type="text"
                 className="form-control"
-                value={this.state.topNote}
+                value={this.state.updateTopNote}
                 onChange={this.updateFormField}
                 placeholder="Seperate each ingredient with comma "
               />
@@ -372,10 +419,10 @@ export default class CreatNewPage extends React.Component {
             >
               <h6>Middle Note</h6>
               <input
-                name="middleNote"
+                name="updateMiddleNote"
                 type="text"
                 className="form-control"
-                value={this.state.middleNote}
+                value={this.state.updateMiddleNote}
                 onChange={this.updateFormField}
                 placeholder="Seperate each ingredient with comma "
               />
@@ -404,10 +451,10 @@ export default class CreatNewPage extends React.Component {
             >
               <h6>Base Note</h6>
               <input
-                name="baseNote"
+                name="updateBaseNote"
                 type="text"
                 className="form-control"
-                value={this.state.baseNote}
+                value={this.state.updateBaseNote}
                 onChange={this.updateFormField}
                 placeholder="Seperate each ingredient with comma "
               />
@@ -434,11 +481,11 @@ export default class CreatNewPage extends React.Component {
               <h4>Created By</h4>
               <div className="container" id="user-container">
                 <input
-                  name="userName"
+                  name="updateUserName"
                   type="text"
                   className="form-control mt-2"
                   placeholder="User Name"
-                  value={this.state.userName}
+                  value={this.state.updateUserName}
                   onChange={this.updateFormField}
                 ></input>
                 {this.state.showUserNameError ? (
@@ -449,11 +496,11 @@ export default class CreatNewPage extends React.Component {
               </div>
               <div className="container" id="email-container">
                 <input
-                  name="userEmail"
+                  name="updateUserEmail"
                   type="text"
                   className="form-control mt-2"
                   placeholder="Email"
-                  value={this.state.userEmail}
+                  value={this.state.updateUserEmail}
                   onChange={this.updateFormField}
                 />
                 {this.state.showUserEmaiError ? (
@@ -468,17 +515,17 @@ export default class CreatNewPage extends React.Component {
             <div className="container mt-4 mb-4 pb-4  ">
               <button
                 className="btn btn-outline-dark"
-                onClick={this.addNewSubmit}
+                onClick={this.submitUpdate}
               >
-                Submit
+                Update
               </button>
             </div>
           </div>
         </div>
-        <SuccessAdded
+        {/* <SuccessAdded
           successAdded={this.state.successAdded}
           closeSuccessAdded={this.closeSuccessAdded}
-        />
+        /> */}
       </React.Fragment>
     );
   }
