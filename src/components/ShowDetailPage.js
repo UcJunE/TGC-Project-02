@@ -3,6 +3,7 @@ import React from "react";
 export default class ShowDetailPage extends React.Component {
   state = {
     isLoading: false,
+    currentId: null,
   };
 
   isLoading = () => {
@@ -13,6 +14,9 @@ export default class ShowDetailPage extends React.Component {
     this.setState({ isLoading: false });
   };
 
+  changeToShowDetailPage = (r) => {
+    this.setState({ currentId: r });
+  };
   render() {
     return (
       <React.Fragment>
@@ -25,6 +29,7 @@ export default class ShowDetailPage extends React.Component {
               <div className="container detailTitle mt-4">
                 <h1>{r.name}</h1>
                 <div id="contentBox" className="container">
+                  <h2>{r.brand}</h2>
                   <div className="container">
                     <p>{r.description}</p>
                   </div>
@@ -51,7 +56,11 @@ export default class ShowDetailPage extends React.Component {
               </button>
               <button
                 className="btn btn-lg btn-outline-dark"
-                onClick={this.props.changeToProfilePage}
+                onClick={() => {
+                  console.log(r._id);
+                  this.props.deletePost(r._id);
+                  this.props.refreshSearchResult();
+                }}
               >
                 Delete
               </button>

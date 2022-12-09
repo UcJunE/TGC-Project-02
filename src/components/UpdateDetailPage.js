@@ -1,8 +1,10 @@
 import React from "react";
 import axios from "axios";
 import SuccessAdded from "../components/SuccessAdded";
+// import "../css/SuccessAdded.css";
 
 export default class UpdateDetailPage extends React.Component {
+  BASE_API_URL = "http://localhost:8888/";
   state = {
     data: [],
     updateCurrentId: "",
@@ -41,7 +43,7 @@ export default class UpdateDetailPage extends React.Component {
   componentDidMount = () => {
     let currentId = this.props.foundResult._id;
     let name = this.props.foundResult.name;
-    let brand = this.props.foundResult.brand.name;
+    let brand = this.props.foundResult.brand;
     let newDescription = this.props.foundResult.description;
     let type = this.props.foundResult.type;
     let year = this.props.foundResult.yearLaunch;
@@ -76,16 +78,162 @@ export default class UpdateDetailPage extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  closeSuccessAdded = () => {
+    this.setState({ successAdded: false });
+  };
+
+  submitUpdate = async () => {
+    //check for name
+    if (!this.state.updateName || this.state.updateName.length > 50) {
+      this.setState({ showNameError: true });
+    } else {
+      this.setState({ showNameError: false });
+    }
+
+    //check for brand
+    if (!this.state.updateBrand || this.state.updateBrand.length > 50) {
+      this.setState({ showBrandError: true });
+    } else {
+      this.setState({ showBrandError: false });
+    }
+
+    //check for description
+    if (
+      !this.state.updateNewDescription ||
+      this.state.updateNewDescription > 200
+    ) {
+      this.setState({ showDescriptionError: true });
+    } else {
+      this.setState({ showDescriptionError: false });
+    }
+
+    //check for type
+    if (!this.state.updateType) {
+      this.setState({ showTypeError: true });
+    } else {
+      this.setState({ showTypeError: false });
+    }
+
+    //check for year
+    if (!this.state.updateYear) {
+      this.setState({ showYearError: true });
+    } else {
+      this.setState({ showYearError: false });
+    }
+
+    //check for image url
+    if (!this.state.updateImageURL) {
+      this.setState({ showImgError: true });
+    } else {
+      this.setState({ showImgError: false });
+    }
+
+    //check for scent
+    if (this.state.updateScent) {
+      this.setState({ showScentError: false });
+    } else {
+      this.setState({ showScentError: true });
+    }
+
+    //check for ingredient topnote
+    if (!this.state.updateTopNote) {
+      this.setState({ showTopNoteError: true });
+    } else {
+      this.setState({ showTopNoteError: false });
+    }
+
+    //check for middlenote
+    if (!this.state.updateMiddleNote) {
+      this.setState({ showMiddleNoteError: true });
+    } else {
+      this.setState({ showMiddleNoteError: false });
+    }
+    //check for base note
+    if (!this.state.updateBaseNote) {
+      this.setState({ showBaseNoteError: true });
+    } else {
+      this.setState({ showBaseNoteError: false });
+    }
+
+    //check for username
+    if (!this.state.updateUserName) {
+      this.setState({ showUserNameError: true });
+    } else {
+      this.setState({ showUserNameError: false });
+    }
+
+    //check for email
+    if (
+      this.state.updateUserEmail.includes("@") &&
+      this.state.updateUserEmail.includes(".")
+    ) {
+      this.setState({
+        showUserEmaiError: false,
+      });
+    } else {
+      this.setState({
+        showUserEmaiError: true,
+      });
+    }
+
+    // each field validation done . next . posting data to backend, check if all field is valid then only insert
+    if (
+      this.state.updateName &&
+      this.state.updateBrand &&
+      this.state.updateNewDescription &&
+      this.state.updateType &&
+      this.state.updateYear &&
+      this.state.updateImageURL &&
+      this.state.updateScent &&
+      this.state.updateTopNote &&
+      this.state.updateMiddleNote &&
+      this.state.updateBaseNote &&
+      this.state.updateUserName &&
+      this.state.updateUserEmail
+    ) {
+      let createdBy = {
+        userName: this.state.updateUserName,
+        userEmail: this.state.updateUserEmail,
+      };
+
+      try {
+        let response = await axios.put(
+          this.BASE_API_URL + "update-perfume/" + this.state.updateCurrentId,
+          {
+            name: this.state.updateName,
+            description: this.state.updateNewDescription,
+            type: this.state.updateType,
+            yearLaunch: this.state.updateYear,
+            picUrl: this.state.updateImageURL,
+            scent: this.state.updateScent,
+            createdBy: createdBy,
+            brand: this.state.updateBrand,
+            topNote: this.state.updateTopNote,
+            middleNote: this.state.updateMiddleNote,
+            baseNote: this.state.updateBaseNote,
+          }
+        );
+        console.log(response);
+      } catch (e) {
+        console.log(e);
+      }
+      this.setState({ successAdded: true });
+    }
+  };
+
   render() {
     return (
       <React.Fragment>
         <div className="container py-3" id="main-container">
-        <button
-                className="btn btn-outline-dark"
-                onClick={this.props.changeToShowDetailPage}
-              >
-                Back
-              </button>
+          <button
+            className="btn btn-outline-dark"
+            onClick={() => {
+              this.props.changeToShowDetailPage(this.state.updateCurrentId);
+              this.props.refreshSearchResult();
+            }}
+          >
+            Back
+          </button>
           <div className="container" id="detail-container">
             <div className="container mt-3 py-4">
               <h3 className="container title">Update Your Perfume </h3>
@@ -367,18 +515,17 @@ export default class UpdateDetailPage extends React.Component {
             <div className="container mt-4 mb-4 pb-4  ">
               <button
                 className="btn btn-outline-dark"
-                onClick={this.addNewSubmit}
+                onClick={this.submitUpdate}
               >
                 Update
               </button>
-            
             </div>
           </div>
         </div>
-        <SuccessAdded
+        {/* <SuccessAdded
           successAdded={this.state.successAdded}
           closeSuccessAdded={this.closeSuccessAdded}
-        />
+        /> */}
       </React.Fragment>
     );
   }

@@ -12,7 +12,7 @@ export default class Profile extends React.Component {
     currentPage: "profile",
     userName: "",
     userEmail: "",
-    currentId:null,
+    currentId: null,
     isLoading: false,
     //validation part
     showNameError: false,
@@ -47,8 +47,8 @@ export default class Profile extends React.Component {
     this.setState({ isLoading: false });
   };
 
-  changeToShowDetailPage = () => {
-    this.setState({ currentPage: "showDetail" });
+  changeToShowDetailPage = (r) => {
+    this.setState({ currentPage: "showDetail", currentId: r });
   };
 
   changeToProfilePage = () => {
@@ -57,7 +57,15 @@ export default class Profile extends React.Component {
   };
 
   changeToUpdatePage = (r) => {
-    this.setState({ currentPage: "update" ,currentId :r});
+    this.setState({ currentPage: "update", currentId: r });
+  };
+
+  deleteCurrentPost = async (r) => {
+    console.log(r);
+    await axios.delete(
+      this.BASE_API_URL + "delete-perfume/" + r
+    );
+    console.log(" ITS DELETED");
   };
 
   // to search document via the email that createdby
@@ -122,6 +130,8 @@ export default class Profile extends React.Component {
             foundResult={this.state.data}
             changeToProfilePage={this.changeToProfilePage}
             changeToUpdatePage={this.changeToUpdatePage}
+            deletePost={this.deleteCurrentPost}
+            refreshSearchResult={this.searchUserPerfume}
           />
         </React.Fragment>
       );
@@ -131,6 +141,7 @@ export default class Profile extends React.Component {
           <UpdateDetailPage
             foundResult={this.state.currentId}
             changeToShowDetailPage={this.changeToShowDetailPage}
+            refreshSearchResult={this.searchUserPerfume}
           />
         </React.Fragment>
       );
