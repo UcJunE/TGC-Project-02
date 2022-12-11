@@ -1,13 +1,23 @@
 import React from "react";
 import axios from "axios";
+import { GiBrandyBottle, GiDelicatePerfume } from "react-icons/gi";
+import {
+  BiCategory,
+  BiHappyHeartEyes,
+  BiLike,
+  BiSearch,
+  BiFilterAlt,
+} from "react-icons/bi";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "../css/SearchPage.css";
 import "../components/SingleDetailPage";
+import Loading from "../components/Loading";
 import SingleDetailPage from "../components/SingleDetailPage";
 
 export default class SearchPage extends React.Component {
-  BASE_API_URL = "http://localhost:8888/";
+  BASE_API_URL = "https://ucjune-project02-database.onrender.com/";
 
   //basic query
   state = {
@@ -39,17 +49,17 @@ export default class SearchPage extends React.Component {
 
   updateStar = (n) => {
     if (n === "1") {
-      return <p> Rating :⭐</p>;
+      return `  ⭐`;
     } else if (n === "2") {
-      return <p>Rating : ⭐⭐</p>;
+      return `  ⭐⭐`;
     } else if (n === "3") {
-      return <p>Rating : ⭐⭐⭐</p>;
+      return `  ⭐⭐⭐`;
     } else if (n === "4") {
-      return <p>Rating : ⭐⭐⭐⭐</p>;
+      return `  ⭐⭐⭐⭐`;
     } else if (n === "5") {
-      return <p>Rating : ⭐⭐⭐⭐⭐</p>;
+      return `  ⭐⭐⭐⭐⭐`;
     } else {
-      return <p> Rating : ✰ ✰ ✰ ✰ ✰</p>;
+      return `  ✰ ✰ ✰ ✰ ✰`;
     }
   };
 
@@ -150,7 +160,6 @@ export default class SearchPage extends React.Component {
       }
       return (
         <React.Fragment>
-          <h1> This was meant for detailed search</h1>
           <SingleDetailPage
             changeToCurrentPage={this.changeToCurrentPage}
             detailSearchId={[this.state.detailSearchId]}
@@ -162,7 +171,7 @@ export default class SearchPage extends React.Component {
         <React.Fragment>
           <div className="container">
             <div className="container" id="search-container">
-              <div className="container  mb-3">
+              <div className="mb-3 px-3 main-container">
                 <input
                   name="searchName"
                   type="textbox"
@@ -172,18 +181,18 @@ export default class SearchPage extends React.Component {
                   value={this.state.searchName}
                   onChange={this.updateFormField}
                 />
-                <div>
+                <div className="container btn-box">
                   <button
-                    className="btn btn-sm btn-primary "
+                    className="btn  btn-effect "
                     onClick={this.filterSearch}
                   >
-                    Search
+                    <BiSearch className="search-icon" />
                   </button>
                   <button
-                    className="btn btn-sm btn-primary "
+                    className="btn  btn-effect "
                     onClick={this.toggleFilter}
                   >
-                    Filter
+                    <BiFilterAlt className="search-icon" />
                   </button>
                 </div>
               </div>
@@ -273,7 +282,7 @@ export default class SearchPage extends React.Component {
 
                 <div>
                   <button
-                    className="mt-3 btn btn-primary"
+                    className="mt-3 btn btn-effect"
                     onClick={this.filterSearch}
                   >
                     Submit
@@ -281,37 +290,55 @@ export default class SearchPage extends React.Component {
                 </div>
               </div>
             </div>
-            {this.state.isLoading ? (
-              <div id="loading">I AM LOADING YO</div>
-            ) : (
-              ""
-            )}
+            {this.state.isLoading ? <Loading /> : ""}
             <div className="row">
               {this.state.data.map((r) => (
-                <React.Fragment key={r._id}>
-                  <div className="card mt-3 ms-3 ">
+                <div className="col col-12 col-lg-4 col-md-6" key={r._id}>
+                  <div className="card mt-3 ms-3 img-wrapper">
                     <img
                       src={r.picUrl}
-                      className="card-img-top img-fluid"
-                      alt="ck-one-img"
+                      className="card-img-top img-fluid zoom"
+                      alt="perfume-img"
                     />
+                    <div className="content fade container">
+                      <div className="container perfume-box">
+                        <h4 className="perfume-name">
+                          <GiDelicatePerfume className="brand-icon" /> {r.name}
+                        </h4>
+                      </div>
+                      <div className="container-fluid ">
+                        <h5 className="perfume-text">
+                          <GiBrandyBottle className="brand-icon" /> {r.brand}
+                        </h5>
+                      </div>
+                      <div className="container">
+                        <h5 className="perfume-text">
+                          <BiHappyHeartEyes className="brand-icon" /> {r.scent}
+                        </h5>
+                      </div>
+                      <div className="container">
+                        <h5 className="perfume-text">
+                          <BiCategory className="brand-icon" /> {r.type}
+                        </h5>
+                      </div>
+                      <div className="container">
+                        <h5 className="perfume-text">
+                          <BiLike className="brand-icon" />
+                          {this.updateStar(r.rating)}
+                        </h5>
+                      </div>
 
-                    <h5 className="card-title">{r.name}</h5>
-                    <p className="card-text">Brand : {r.brand.name}</p>
-
-                    <p className="card-text">Scent type : {r.scent}</p>
-                    <p className="card-text">Type : {r.type}</p>
-                    <h6 className="card-text">{this.updateStar(r.rating)}</h6>
-                    <button
-                      className="container-fluid"
-                      onClick={() => {
-                        this.changeToDetailPage(r);
-                      }}
-                    >
-                      Show more
-                    </button>
+                      <button
+                        className="container-fluid btn btn-effect"
+                        onClick={() => {
+                          this.changeToDetailPage(r);
+                        }}
+                      >
+                        Show more
+                      </button>
+                    </div>
                   </div>
-                </React.Fragment>
+                </div>
               ))}
             </div>
           </div>

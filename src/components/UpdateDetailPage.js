@@ -4,7 +4,7 @@ import SuccessAdded from "../components/SuccessAdded";
 // import "../css/SuccessAdded.css";
 
 export default class UpdateDetailPage extends React.Component {
-  BASE_API_URL = "http://localhost:8888/";
+  BASE_API_URL = "https://ucjune-project02-database.onrender.com/";
   state = {
     data: [],
     updateCurrentId: "",

@@ -1,44 +1,161 @@
-.card{
-    text-align: center;
-    overflow: hidden;
-    box-shadow: 0 0 30px rgba(0,0,0,0.5);
-    border:none;
-    background-image:linear-gradient( #fff 30%, #f6d9d2) !important;
-    max-width: 350px;
-    
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Permanent+Marker&display=swap");
+.img-wrapper {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  background-image: linear-gradient(#fff, #f6d9d2, #fff) !important;
+  text-align: center;
 }
 
-
-.card-img, .card-img-top{
-
-    /* gives the image a rounded border */
-    /* border-top-left-radius: var(--bs-card-inner-border-radius);
-    border-top-right-radius: var(--bs-card-inner-border-radius); */
-    width: 200px;
-    align-self: center;
-    border-radius: 30%;   
+.img-wrapper > img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 18%;
 }
 
-
-#search-container{
-    width:70%;
-    
+.img-wrapper > .content {
+  position: absolute;
+  inset: 0;
+  font-size: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  background-image: linear-gradient(#fff, #f6d9d2, #fff) !important;
 }
 
-#searchFiltersBox{
-   
-    transition: height 0.3s ease;
+.img-wrapper > .content {
+  opacity: 0;
 }
 
+.img-wrapper:hover > .content {
+  opacity: 1;
+}
+
+.img-wrapper:hover > .zoom {
+  transform: scale(1.1);
+}
+.img-wrapper > img,
+.img-wrapper > .content {
+  transition: 200ms ease-in-out;
+}
+
+/* --------------------------------------- */
+@media screen and (min-width: 768px) {
+  #search-container {
+    width: 60%;
+    position: relative;
+  }
+  .main-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .btn-box {
+    width: 165px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .btn-box {
+    width: 190px;
+  }
+  #search-container {
+    width: 100%;
+    position: relative;
+  }
+}
+
+#searchFiltersBox {
+  transition: height 0.3s ease;
+}
 
 .showFilters {
-    height:400px;
-    
-    /* padding: 20px; */
-    /* transition: height 0.5s ease; */
-  }
-  
-  .hideFilters {
-    height: 0px;
-    overflow: hidden;
-  }
+  height: 400px;
+
+  /* padding: 20px; */
+  /* transition: height 0.5s ease; */
+}
+
+.hideFilters {
+  height: 0px;
+  overflow: hidden;
+}
+/* -------------------------------------- */
+.brand-icon {
+  color: #cc313d;
+  font-size: 1.8rem;
+  text-align: left;
+}
+
+.perfume-name {
+  text-align: left;
+  font-family: "Kalam", cursive;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.perfume-text {
+  text-align: left;
+  font-family: "Kalam", cursive;
+  font-weight: 400;
+  font-size: 1.2rem;
+}
+
+.perfume-name > .perfume-box {
+  width: 400px;
+}
+
+/* ---------------------------- */
+.btn {
+  background: none;
+  font-size: 1.2rem;
+  font-family: "Kalam", cursive;
+  font-weight: 400;
+  cursor: pointer;
+  color: #cc313d;
+  transition: 0.8s;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-effect:hover {
+  color: #cf6d54;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: #f6d9d2;
+  z-index: -1;
+  transition: 0.8s;
+}
+
+.btn-effect::before {
+  bottom: 0;
+  border-radius: 50% 50% 0 0;
+}
+
+.btn-effect:hover::before {
+  height: 180%;
+}
+
+/* ------------------------- */
+
+.main-container {
+  display: flex;
+  justify-content: center;
+}

@@ -41,8 +41,14 @@ export default class HomePage extends React.Component {
     return (
       <React.Fragment>
         <nav className="navbar navbar-expand-lg navbar-light">
-          <div className="container-fluid mb-5">
-            <a className="navbar-brand" href="/#">
+          <div className="container-fluid mb-2">
+            <a
+              className="navbar-brand"
+              onClick={() => {
+                this.switchPage("landingPage");
+              }}
+              href="/#"
+            >
               <img
                 className="logo"
                 src={require("../images/hp.png")}
@@ -124,6 +130,7 @@ export default class HomePage extends React.Component {
           </div>
         </nav>
         {this.renderPage()}
+        <div className="container mb-5"></div>
       </React.Fragment>
     );
   }

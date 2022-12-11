@@ -1,11 +1,40 @@
-.logo{
-    width:150px;
-    height:150px;
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Permanent+Marker&display=swap");
+.logo {
+  width: 150px;
+  height: 150px;
+}
+/* --------------------------------------- */
+.nav-link {
+  transition: all 0.2s;
+  position: relative;
 }
 
-.nav-text{
-    font-size: 1.5rem;
+.nav-link::after {
+  content: "";
+  opacity: 0;
+  transition: all 0.2s;
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #8b4736;
 }
+.nav-link:hover::after {
+  opacity: 1;
+}
+
+.nav-text {
+  font-size: 1.5rem;
+  font-family: "Kalam", cursive;
+  font-weight: bold;
+}
+
+/* ------------------------------- */
+.img-1 {
+  color: blue !important;
+}
+
 /* .navbar .navbar-nav .nav-link{
     color:#fff
 } */

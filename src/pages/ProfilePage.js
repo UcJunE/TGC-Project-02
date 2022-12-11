@@ -5,7 +5,7 @@ import ShowDetailPage from "../components/ShowDetailPage";
 import UpdateDetailPage from "../components/UpdateDetailPage";
 
 export default class Profile extends React.Component {
-  BASE_API_URL = "http://localhost:8888/";
+  BASE_API_URL = "https://ucjune-project02-database.onrender.com/";
 
   state = {
     data: [],

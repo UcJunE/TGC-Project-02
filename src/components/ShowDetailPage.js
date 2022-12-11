@@ -20,7 +20,7 @@ export default class ShowDetailPage extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className="container mb-4">
+        <div className="container mb-4" id="detailBox">
           {this.props.foundResult.map((r) => (
             <React.Fragment key={r._id}>
               <div className="container detailImg d-flex justify-content-center mb-4">

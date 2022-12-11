@@ -1,10 +1,19 @@
 import React from "react";
 import axios from "axios";
+import { GiBrandyBottle, GiDelicatePerfume } from "react-icons/gi";
+import {
+  BiUser,
+  BiCategory,
+  BiHappyHeartEyes,
+  BiLike,
+  BiSearch,
+  BiFilterAlt,
+} from "react-icons/bi";
 import SuccessAdded from "../components/SuccessAdded";
 import "../css/CreateNewPage.css";
 
 export default class CreatNewPage extends React.Component {
-  BASE_API_URL = "http://localhost:8888/";
+  BASE_API_URL = "https://ucjune-project02-database.onrender.com/";
 
   state = {
     data: [],
@@ -192,7 +201,7 @@ export default class CreatNewPage extends React.Component {
               <h3 className="container title">Tell Us About Your Perfume </h3>
             </div>
             <div className="container mt-3">
-              <h3>Perfume Name</h3>
+              <h3 className="f-text">Perfume Name</h3>
               <input
                 name="name"
                 type="text"
@@ -207,8 +216,8 @@ export default class CreatNewPage extends React.Component {
                 ""
               )}
             </div>
-            <div className="container">
-              <h3>Brand</h3>
+            <div className="container mt-3">
+              <h3 className="f-text">Brand</h3>
               <input
                 name="brand"
                 type="text"
@@ -225,7 +234,7 @@ export default class CreatNewPage extends React.Component {
             </div>
 
             <div className="container mt-3" id="desc-container">
-              <h4>Description</h4>
+              <h3 className="f-text">Description</h3>
               <textarea
                 rows="3"
                 name="newDescription"
@@ -242,7 +251,7 @@ export default class CreatNewPage extends React.Component {
               )}
             </div>
             <div className="container mt-3" id="type-container">
-              <h4>Type</h4>
+              <h3 className="f-text">Type</h3>
               <div className="form-check form-check-inline">
                 <input
                   className="form-check-input"
@@ -254,7 +263,7 @@ export default class CreatNewPage extends React.Component {
                   onChange={this.updateFormField}
                 />
 
-                <label className="form-check-label">Natural</label>
+                <label className="form-check-label f-text">Natural</label>
               </div>
               <div className="form-check form-check-inline">
                 <input
@@ -267,7 +276,7 @@ export default class CreatNewPage extends React.Component {
                   onChange={this.updateFormField}
                 />
 
-                <label className="form-check-label">Synthetic</label>
+                <label className="form-check-label f-text">Synthetic</label>
               </div>
               {this.state.showTypeError ? (
                 <p className="err-msg">Please select either one</p>
@@ -276,7 +285,7 @@ export default class CreatNewPage extends React.Component {
               )}
             </div>
             <div className="container mt-3">
-              <h4>Year Launch</h4>
+              <h3 className="f-text">Year Launch</h3>
               <input
                 name="year"
                 type="text"
@@ -292,7 +301,7 @@ export default class CreatNewPage extends React.Component {
               )}
             </div>
             <div className="container mt-3">
-              <h4>Image URL</h4>
+              <h3 className="f-text">Image URL</h3>
               <input
                 placeholder="Enter image URL"
                 name="imageURL"
@@ -308,7 +317,7 @@ export default class CreatNewPage extends React.Component {
               )}
             </div>
             <div className="container mt-3" id="scent-container">
-              <h4>Scent</h4>
+              <h3 className="f-text">Scent</h3>
               <select
                 className="form-select inputbox"
                 name="scent"
@@ -331,14 +340,14 @@ export default class CreatNewPage extends React.Component {
             </div>
 
             <div className="container mt-3">
-              <h4>Ingredient</h4>
+              <h3 className="f-text">Ingredient</h3>
             </div>
 
             <div
               className="container mt-3  d-flex flex-column"
               id="ingredient-container-top"
             >
-              <h6>Top Note</h6>
+              <h6 className="f-text">Top Note</h6>
               <input
                 name="topNote"
                 type="text"
@@ -370,7 +379,7 @@ export default class CreatNewPage extends React.Component {
               className="container mt-3  d-flex flex-column"
               id="ingredient-container-mid"
             >
-              <h6>Middle Note</h6>
+              <h6 className="f-text">Heart Note</h6>
               <input
                 name="middleNote"
                 type="text"
@@ -402,7 +411,7 @@ export default class CreatNewPage extends React.Component {
               className="container mt-3  d-flex flex-column"
               id="ingredient-container-base"
             >
-              <h6>Base Note</h6>
+              <h6 className="f-text">Base Note</h6>
               <input
                 name="baseNote"
                 type="text"
@@ -431,7 +440,9 @@ export default class CreatNewPage extends React.Component {
               )}
             </div>
             <div className="container mt-3">
-              <h4>Created By</h4>
+              <div className="container">
+                <h3 className="f-text">Created By</h3>
+              </div>
               <div className="container" id="user-container">
                 <input
                   name="userName"
@@ -466,10 +477,7 @@ export default class CreatNewPage extends React.Component {
               </div>
             </div>
             <div className="container mt-4 mb-4 pb-4  ">
-              <button
-                className="btn btn-outline-dark"
-                onClick={this.addNewSubmit}
-              >
+              <button className="btn btn-effect" onClick={this.addNewSubmit}>
                 Submit
               </button>
             </div>
