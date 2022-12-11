@@ -15,37 +15,47 @@
     background-color: red; /* Modern Browsers */
   }
 
-  .type-box {
+  .type-box-03 {
     display: flex;
   }
-  .img-box {
+
+  .img-box-03 {
     width: 400px;
     box-shadow: 0 0 60px rgba(0, 0, 0, 0.5);
     padding: 0;
     margin-left: 18px;
   }
+  .edit-btn {
+    display: flex;
+    justify-content: center;
+  }
+  .btn-04 {
+    display: flex;
+    width: 150px;
+    right: 122px;
+  }
 
-  .detail-title {
+  .detail-title-03 {
     text-align: center;
     font-size: 2rem;
     font-family: "Montserrat", sans-serif;
     font-weight: bold;
   }
 
-  .sub-title {
+  .sub-title-03 {
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
     font-size: 1.2rem;
   }
 
-  .sub-text {
+  .sub-text-03 {
     font-family: "Kalam", cursive;
     font-size: 1.3rem;
   }
-  .btn-02 {
+  .btn-04 {
     background: none;
     border: none;
-    font-size: 1.2rem;
+    font-size: 1.7rem;
     font-family: "Kalam", cursive;
     text-align: left;
     font-weight: 400;
@@ -56,11 +66,11 @@
     overflow: hidden;
   }
 
-  .btn-effect-02:hover {
+  .btn-effect-04:hover {
     color: #cf6d54;
   }
 
-  .btn-02::before {
+  .btn-04::before {
     content: "";
     position: absolute;
     left: 0;
@@ -71,26 +81,34 @@
     transition: 0.8s;
   }
 
-  .btn-effect-02::before {
+  .btn-effect-04::before {
     bottom: 0;
     border-radius: 50% 50% 0 0;
   }
 
-  .btn-effect-02:hover::before {
+  .btn-effect-04:hover::before {
     height: 180%;
   }
 
-  .b-arrow {
+  .b-arrow-04 {
     font-size: 2rem;
   }
 
-  .b-text {
+  .b-text-04 {
     font-size: 1.7rem;
+  }
+  .update-btn {
+    top: 30px;
+    left: 80px;
+  }
+
+  .arrow-btn {
+    right: 100px;
   }
 }
 
 @media screen and (min-width: 768px) {
-  .main-box-02 {
+  .main-box-03 {
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
     width: 70%;
     /* background-image: linear-gradient(#fff 30%, #f6d9d2) !important; */
@@ -98,40 +116,38 @@
     margin-bottom: 100px;
   }
 
-  hr {
-    border: none;
-    height: 2px;
-    /* Set the hr color */
-    color: red; /* old IE */
-    background-color: red; /* Modern Browsers */
-  }
-  .img-box {
+  .img-box-03 {
     text-align: center;
     padding: 0;
-    margin-left: 18px;
+    background-image: linear-gradient(#fff 30%, #f6d9d2, #fff) !important;
   }
 
-  .detail-title {
+  .parfum-img {
+    border-radius: 30%;
+  }
+
+  .detail-title-03 {
     text-align: center;
+    font-size: 2.7rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+  }
+
+  .sub-title-03 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
     font-size: 2rem;
-    font-family: "Montserrat", sans-serif;
-    font-weight: bold;
   }
 
-  .sub-title {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 700;
-    font-size: 1.2rem;
-  }
-
-  .sub-text {
+  .sub-text-03 {
     font-family: "Kalam", cursive;
-    font-size: 1.3rem;
+    font-size: 1.7rem;
   }
-  .btn-02 {
+  .btn-04 {
     border: none;
     background: none;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    font-weight: 700;
     font-family: "Kalam", cursive;
     text-align: left;
     font-weight: 400;
@@ -140,15 +156,15 @@
     transition: 0.8s;
     position: relative;
     overflow: hidden;
-    width: 150px;
-    right: 600px;
+    width: 50px;
+    height: 40px;
   }
 
-  .btn-effect-02:hover {
+  .btn-effect-04:hover {
     color: #cf6d54;
   }
 
-  .btn-02::before {
+  .btn-04::before {
     content: "";
     position: absolute;
     left: 0;
@@ -159,20 +175,35 @@
     transition: 0.8s;
   }
 
-  .btn-effect-02::before {
+  .btn-effect-04::before {
     bottom: 0;
     border-radius: 50% 50% 0 0;
   }
 
-  .btn-effect-02:hover::before {
+  .btn-effect-04:hover::before {
     height: 180%;
   }
 
-  .b-arrow {
+  .b-arrow-04 {
     font-size: 2rem;
   }
 
-  .b-text {
+  .b-text-04 {
     font-size: 1.7rem;
+    font-weight: bold;
+  }
+  .btn-04 {
+    display: flex;
+    width: 170px;
+    position: absolute;
+    left: 370px;
+    top: 140px;
+  }
+
+  .update-btn {
+    font-size: 2rem;
+    width: 120px;
+    top: 1800px;
+    left: 850px;
   }
 }

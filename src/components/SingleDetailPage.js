@@ -54,64 +54,64 @@ export default class SingleDetailPage extends React.Component {
               ></img>
             </div>
 
-            <div className="container mt-4">
+            <div className="container mt-4 py-3">
               <div className="container">
-                <div className="container mb-4 detail-title">
-                  <h1>{r.brand}</h1>
+                <div className="container mb-4">
+                  <h1 className="detail-title-03">{r.brand}</h1>
                 </div>
-                <div className="container mb-4 sub-text">
-                  <h2>{r.name}</h2>
+                <div className="container mb-4">
+                  <h2 className="sub-text-03">{r.name}</h2>
                 </div>
               </div>
 
               <hr />
               <div id="content-Box" className="container mb-4">
-                <div className="container sub-title mb-3">
-                  <h2>Description</h2>
+                <div className="container mb-3">
+                  <h2 className="sub-title-03">Description</h2>
                 </div>
-                <div className="container sub-text">{r.description}</div>
+                <div className="container sub-text-03">{r.description}</div>
               </div>
 
               <hr />
               <div className="container type-box">
                 <div className="container sub-title">
-                  <h4>Type</h4>
+                  <h4 className="sub-title-03">Type</h4>
                 </div>
-                <div className="container mb-3 sub-text">{r.type}</div>
+                <div className="container mb-3 sub-text-03">{r.type}</div>
                 <div className="container sub-title">
-                  <h4>Year</h4>
+                  <h4 className="sub-text-03">Year</h4>
                 </div>
-                <div className="container mb-3 sub-text">{r.yearLaunch}</div>
+                <div className="container mb-3 sub-text-03">{r.yearLaunch}</div>
               </div>
 
               <hr />
               <div className="container" id="ingredient-box">
                 <div className="container mb-4 detail-title">
-                  <h2>Perfume Pyramid</h2>
+                  <h2 className="detail-title-03">Perfume Pyramid</h2>
                 </div>
                 <div className="container sub-title mb-3">
-                  <h4>Top Notes</h4>
+                  <h4 className="sub-title-03">Top Notes</h4>
                 </div>
-                <div className="container mb-3 sub-text">
+                <div className="container mb-3 sub-text-03">
                   {r.ingredient.topNote.join(" , ")}
                 </div>
                 <div className="container sub-title mb-3">
-                  <h4>Heart Notes</h4>
+                  <h4 className="sub-title-03">Heart Notes</h4>
                 </div>
-                <div className="container mb-3 sub-text">
+                <div className="container mb-3 sub-text-03">
                   {r.ingredient.middleNote.join(" , ")}
                 </div>
-                <div className="container sub-title mb-3">
-                  <h4>Base Note</h4>
+                <div className="container sub-title-03 mb-3">
+                  <h4 className="sub-title-03">Base Note</h4>
                 </div>
-                <div className="container mb-3 sub-text">
+                <div className="container mb-3 sub-text-03">
                   {r.ingredient.baseNote.join(" , ")}
                 </div>
               </div>
               <hr />
               <div className="container">
-                <div className="container d-flex sub-title py-3">
-                  <h4 className="">Rating</h4>
+                <div className="container d-flex sub-title-03 py-3">
+                  <h4 className="sub-title-03">Rating</h4>
                   <h5 className="mx-3">{this.updateStar(r.rating)}</h5>
                 </div>
               </div>

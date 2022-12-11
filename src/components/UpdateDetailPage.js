@@ -1,7 +1,16 @@
 import React from "react";
 import axios from "axios";
 import SuccessAdded from "../components/SuccessAdded";
-// import "../css/SuccessAdded.css";
+import {
+  BiArrowBack,
+  BiCategory,
+  BiHappyHeartEyes,
+  BiLike,
+  BiSearch,
+  BiFilterAlt,
+} from "react-icons/bi";
+import "../css/SuccessAdded.css";
+import "../css/UpdateDetailPage.css";
 
 export default class UpdateDetailPage extends React.Component {
   BASE_API_URL = "https://ucjune-project02-database.onrender.com/";
@@ -226,24 +235,25 @@ export default class UpdateDetailPage extends React.Component {
       <React.Fragment>
         <div className="container py-3" id="main-container">
           <button
-            className="btn btn-outline-dark"
+            className="container btn-04 btn-effect-04 arrow-btn"
             onClick={() => {
               this.props.changeToShowDetailPage(this.state.updateCurrentId);
               this.props.refreshSearchResult();
             }}
           >
-            Back
+            <BiArrowBack className="b-arrow-04" />
+            <p className="px-2 b-text-04">Back</p>
           </button>
           <div className="container" id="detail-container">
             <div className="container mt-3 py-4">
-              <h3 className="container title">Update Your Perfume </h3>
+              <h3 className="container detail-title-03">Edit Your Perfume </h3>
             </div>
             <div className="container mt-3">
-              <h3>Perfume Name</h3>
+              <h3 className="sub-title-03">Perfume Name</h3>
               <input
                 name="updateName"
                 type="text"
-                className="form-control"
+                className="form-control sub-text mt-3"
                 placeholder="Perfume Name"
                 value={this.state.updateName}
                 onChange={this.updateFormField}
@@ -254,12 +264,12 @@ export default class UpdateDetailPage extends React.Component {
                 ""
               )}
             </div>
-            <div className="container">
-              <h3>Brand</h3>
+            <div className="container mt-3">
+              <h3 className="sub-title-03 mt-3">Brand</h3>
               <input
                 name="updateBrand"
                 type="text"
-                className="form-control"
+                className="form-control sub-text"
                 placeholder="Brand Name"
                 value={this.state.updateBrand}
                 onChange={this.updateFormField}
@@ -272,12 +282,12 @@ export default class UpdateDetailPage extends React.Component {
             </div>
 
             <div className="container mt-3" id="desc-container">
-              <h4>Description</h4>
+              <h4 className="sub-title-03">Description</h4>
               <textarea
                 rows="3"
                 name="updateNewDescription"
                 type="text"
-                className="form-control "
+                className="form-control sub-text mt-3"
                 placeholder="Description of the perfume"
                 value={this.state.updateNewDescription}
                 onChange={this.updateFormField}
@@ -289,10 +299,10 @@ export default class UpdateDetailPage extends React.Component {
               )}
             </div>
             <div className="container mt-3" id="type-container">
-              <h4>Type</h4>
+              <h4 className="sub-title-03">Type</h4>
               <div className="form-check form-check-inline">
                 <input
-                  className="form-check-input"
+                  className="form-check-input mt-3"
                   type="radio"
                   name="updateType"
                   id="natural"
@@ -301,11 +311,13 @@ export default class UpdateDetailPage extends React.Component {
                   onChange={this.updateFormField}
                 />
 
-                <label className="form-check-label">Natural</label>
+                <label className="form-check-label sub-text mt-2 px-2">
+                  Natural
+                </label>
               </div>
               <div className="form-check form-check-inline">
                 <input
-                  className="form-check-input "
+                  className="form-check-input"
                   type="radio"
                   name="updateType"
                   id="synthetic"
@@ -314,7 +326,7 @@ export default class UpdateDetailPage extends React.Component {
                   onChange={this.updateFormField}
                 />
 
-                <label className="form-check-label">Synthetic</label>
+                <label className="form-check-label sub-text">Synthetic</label>
               </div>
               {this.state.showTypeError ? (
                 <p className="err-msg">Please select either one</p>
@@ -323,11 +335,11 @@ export default class UpdateDetailPage extends React.Component {
               )}
             </div>
             <div className="container mt-3">
-              <h4>Year Launch</h4>
+              <h4 className="sub-title-03">Year Launch</h4>
               <input
                 name="updateYear"
                 type="text"
-                className="form-control"
+                className="form-control sub-text mt-3"
                 placeholder="Integer Only"
                 value={this.state.updateYear}
                 onChange={this.updateFormField}
@@ -339,12 +351,12 @@ export default class UpdateDetailPage extends React.Component {
               )}
             </div>
             <div className="container mt-3">
-              <h4>Image URL</h4>
+              <h4 className="sub-title-03">Image URL</h4>
               <input
                 placeholder="Enter image URL"
                 name="updateImageURL"
                 type="text"
-                className="form-control"
+                className="form-control sub-text mt-3"
                 value={this.state.updateImageURL}
                 onChange={this.updateFormField}
               ></input>
@@ -355,9 +367,9 @@ export default class UpdateDetailPage extends React.Component {
               )}
             </div>
             <div className="container mt-3" id="scent-container">
-              <h4>Scent</h4>
+              <h4 className="sub-title-03">Scent</h4>
               <select
-                className="form-select inputbox"
+                className="form-select inputbox sub-text mt-3"
                 name="updateScent"
                 selected
                 onChange={this.updateFormField}
@@ -378,18 +390,20 @@ export default class UpdateDetailPage extends React.Component {
             </div>
 
             <div className="container mt-3">
-              <h4>Ingredient</h4>
+              <h4 style={{ textAlign: "center" }} className="sub-title-03">
+                Ingredient
+              </h4>
             </div>
 
             <div
-              className="container mt-3  d-flex flex-column"
+              className="container mt-3  d-flex flex-column sub-title-03"
               id="ingredient-container-top"
             >
-              <h6>Top Note</h6>
+              <h6 className="sub-title-03">Top Note</h6>
               <input
                 name="updateTopNote"
                 type="text"
-                className="form-control"
+                className="form-control sub-text mt-3"
                 value={this.state.updateTopNote}
                 onChange={this.updateFormField}
                 placeholder="Seperate each ingredient with comma "
@@ -414,14 +428,14 @@ export default class UpdateDetailPage extends React.Component {
               )}
             </div>
             <div
-              className="container mt-3  d-flex flex-column"
+              className="container mt-3  d-flex flex-column sub-title-03"
               id="ingredient-container-mid"
             >
-              <h6>Middle Note</h6>
+              <h6 className="sub-title-03">Middle Note</h6>
               <input
                 name="updateMiddleNote"
                 type="text"
-                className="form-control"
+                className="form-control sub-text mt-3"
                 value={this.state.updateMiddleNote}
                 onChange={this.updateFormField}
                 placeholder="Seperate each ingredient with comma "
@@ -449,11 +463,11 @@ export default class UpdateDetailPage extends React.Component {
               className="container mt-3  d-flex flex-column"
               id="ingredient-container-base"
             >
-              <h6>Base Note</h6>
+              <h6 className="sub-title-03">Base Note</h6>
               <input
                 name="updateBaseNote"
                 type="text"
-                className="form-control"
+                className="form-control sub-text"
                 value={this.state.updateBaseNote}
                 onChange={this.updateFormField}
                 placeholder="Seperate each ingredient with comma "
@@ -477,13 +491,13 @@ export default class UpdateDetailPage extends React.Component {
                 ""
               )}
             </div>
-            <div className="container mt-3">
-              <h4>Created By</h4>
+            <div className="container mt-3 sub-title-03">
+              <h4 className="sub-title-03">Created By</h4>
               <div className="container" id="user-container">
                 <input
                   name="updateUserName"
                   type="text"
-                  className="form-control mt-2"
+                  className="form-control mt-3 sub-text"
                   placeholder="User Name"
                   value={this.state.updateUserName}
                   onChange={this.updateFormField}
@@ -494,11 +508,11 @@ export default class UpdateDetailPage extends React.Component {
                   ""
                 )}
               </div>
-              <div className="container" id="email-container">
+              <div className="container sub-title-03" id="email-container">
                 <input
                   name="updateUserEmail"
                   type="text"
-                  className="form-control mt-2"
+                  className="form-control mt-2 sub-text mt-3"
                   placeholder="Email"
                   value={this.state.updateUserEmail}
                   onChange={this.updateFormField}
@@ -514,7 +528,7 @@ export default class UpdateDetailPage extends React.Component {
             </div>
             <div className="container mt-4 mb-4 pb-4  ">
               <button
-                className="btn btn-outline-dark"
+                className="btn btn-04 btn-effect-04 update-btn"
                 onClick={this.submitUpdate}
               >
                 Update
@@ -522,10 +536,10 @@ export default class UpdateDetailPage extends React.Component {
             </div>
           </div>
         </div>
-        {/* <SuccessAdded
+        <SuccessAdded
           successAdded={this.state.successAdded}
           closeSuccessAdded={this.closeSuccessAdded}
-        /> */}
+        />
       </React.Fragment>
     );
   }

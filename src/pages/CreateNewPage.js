@@ -56,7 +56,23 @@ export default class CreatNewPage extends React.Component {
   };
 
   closeSuccessAdded = () => {
-    this.setState({ successAdded: false });
+    this.setState({
+      successAdded: false,
+      name: "",
+      brand: "",
+      newDescription: "",
+      type: "",
+      year: "",
+      price: "",
+      imageURL: "",
+      scent: "select one",
+      topNote: "",
+      middleNote: "",
+      baseNote: "",
+      userName: "",
+      userEmail: "",
+      createdBy: {},
+    });
   };
 
   addNewSubmit = async () => {
@@ -197,11 +213,11 @@ export default class CreatNewPage extends React.Component {
       <React.Fragment>
         <div className="container py-3" id="main-container">
           <div className="container" id="detail-container">
-            <div className="container mt-3 py-4">
-              <h3 className="container title">Tell Us About Your Perfume </h3>
+            <div className="container mt-3 py-4 title">
+              <h3 className="container detail-title-03 ">Tell Us About Your Perfume </h3>
             </div>
             <div className="container mt-3">
-              <h3 className="f-text">Perfume Name</h3>
+              <h3 className="sub-title-03">Perfume Name</h3>
               <input
                 name="name"
                 type="text"
@@ -217,7 +233,7 @@ export default class CreatNewPage extends React.Component {
               )}
             </div>
             <div className="container mt-3">
-              <h3 className="f-text">Brand</h3>
+              <h3 className="sub-title-03">Brand</h3>
               <input
                 name="brand"
                 type="text"
@@ -234,7 +250,7 @@ export default class CreatNewPage extends React.Component {
             </div>
 
             <div className="container mt-3" id="desc-container">
-              <h3 className="f-text">Description</h3>
+              <h3 className="sub-title-03">Description</h3>
               <textarea
                 rows="3"
                 name="newDescription"
@@ -251,7 +267,7 @@ export default class CreatNewPage extends React.Component {
               )}
             </div>
             <div className="container mt-3" id="type-container">
-              <h3 className="f-text">Type</h3>
+              <h3 className="sub-title-03">Type</h3>
               <div className="form-check form-check-inline">
                 <input
                   className="form-check-input"
@@ -263,7 +279,7 @@ export default class CreatNewPage extends React.Component {
                   onChange={this.updateFormField}
                 />
 
-                <label className="form-check-label f-text">Natural</label>
+                <label className="form-check-label sub-text-03">Natural</label>
               </div>
               <div className="form-check form-check-inline">
                 <input
@@ -276,7 +292,7 @@ export default class CreatNewPage extends React.Component {
                   onChange={this.updateFormField}
                 />
 
-                <label className="form-check-label f-text">Synthetic</label>
+                <label className="form-check-label sub-text-03">Synthetic</label>
               </div>
               {this.state.showTypeError ? (
                 <p className="err-msg">Please select either one</p>
@@ -285,7 +301,7 @@ export default class CreatNewPage extends React.Component {
               )}
             </div>
             <div className="container mt-3">
-              <h3 className="f-text">Year Launch</h3>
+              <h3 className="sub-title-03">Year Launch</h3>
               <input
                 name="year"
                 type="text"
@@ -301,7 +317,7 @@ export default class CreatNewPage extends React.Component {
               )}
             </div>
             <div className="container mt-3">
-              <h3 className="f-text">Image URL</h3>
+              <h3 className="sub-title-03">Image URL</h3>
               <input
                 placeholder="Enter image URL"
                 name="imageURL"
@@ -317,7 +333,7 @@ export default class CreatNewPage extends React.Component {
               )}
             </div>
             <div className="container mt-3" id="scent-container">
-              <h3 className="f-text">Scent</h3>
+              <h3 className="sub-title-03">Scent</h3>
               <select
                 className="form-select inputbox"
                 name="scent"
@@ -340,14 +356,14 @@ export default class CreatNewPage extends React.Component {
             </div>
 
             <div className="container mt-3">
-              <h3 className="f-text">Ingredient</h3>
+              <h3 className="detail-title-03">Ingredient</h3>
             </div>
 
             <div
               className="container mt-3  d-flex flex-column"
               id="ingredient-container-top"
             >
-              <h6 className="f-text">Top Note</h6>
+              <h6 className="sub-title-03">Top Note</h6>
               <input
                 name="topNote"
                 type="text"
@@ -379,7 +395,7 @@ export default class CreatNewPage extends React.Component {
               className="container mt-3  d-flex flex-column"
               id="ingredient-container-mid"
             >
-              <h6 className="f-text">Heart Note</h6>
+              <h6 className="sub-title-03">Heart Note</h6>
               <input
                 name="middleNote"
                 type="text"
@@ -411,7 +427,7 @@ export default class CreatNewPage extends React.Component {
               className="container mt-3  d-flex flex-column"
               id="ingredient-container-base"
             >
-              <h6 className="f-text">Base Note</h6>
+              <h6 className="sub-title-03">Base Note</h6>
               <input
                 name="baseNote"
                 type="text"
@@ -441,7 +457,7 @@ export default class CreatNewPage extends React.Component {
             </div>
             <div className="container mt-3">
               <div className="container">
-                <h3 className="f-text">Created By</h3>
+                <h3 className="sub-title-03">Created By</h3>
               </div>
               <div className="container" id="user-container">
                 <input
@@ -477,7 +493,7 @@ export default class CreatNewPage extends React.Component {
               </div>
             </div>
             <div className="container mt-4 mb-4 pb-4  ">
-              <button className="btn btn-effect" onClick={this.addNewSubmit}>
+              <button className="btn btn-effect sub-title-03" onClick={this.addNewSubmit}>
                 Submit
               </button>
             </div>

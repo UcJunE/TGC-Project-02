@@ -52,7 +52,7 @@ export default class Profile extends React.Component {
   };
 
   changeToProfilePage = () => {
-    this.setState({ currentPage: "profile" });
+    this.setState({ currentPage: "profile", userEmail: "" });
     console.log("CHANGE TO PROFILE PAGE");
   };
 
@@ -62,9 +62,7 @@ export default class Profile extends React.Component {
 
   deleteCurrentPost = async (r) => {
     console.log(r);
-    await axios.delete(
-      this.BASE_API_URL + "delete-perfume/" + r
-    );
+    await axios.delete(this.BASE_API_URL + "delete-perfume/" + r);
     console.log(" ITS DELETED");
   };
 
@@ -105,23 +103,30 @@ export default class Profile extends React.Component {
   renderPage = () => {
     if (this.state.currentPage === "profile") {
       return (
-        <React.Fragment>
-          <div className="container">
-            <div className="container">
-              <h1>Login</h1>
-              <div className="container">Email</div>
-              <div>
-                <input
-                  type="text"
-                  name="userEmail"
-                  value={this.state.userEmail}
-                  onChange={this.updateFormField}
-                />
-              </div>
-              <button onClick={this.searchUserPerfume}>Login</button>
-            </div>
+        <div className="container login-box mt-3 py-4">
+          <div className="container mt-4">
+            <h1 className="detail-title-03 login-text">
+              Enter Email To Proceed
+            </h1>
           </div>
-        </React.Fragment>
+          <div className="container mt-4 mb-5">
+            <input
+              className="form-control"
+              type="text"
+              name="userEmail"
+              value={this.state.userEmail}
+              onChange={this.updateFormField}
+              placeholder="Enter Your Email"
+            />
+
+            <button
+              className="btn btn-03 btn-effect-03 mt-3 login-btn"
+              onClick={this.searchUserPerfume}
+            >
+              Login
+            </button>
+          </div>
+        </div>
       );
     } else if (this.state.currentPage === "showDetail") {
       return (
