@@ -19,20 +19,9 @@
     display: flex;
   }
 
-  .img-box-03 {
-    width: 400px;
-    box-shadow: 0 0 60px rgba(0, 0, 0, 0.5);
-    padding: 0;
-    margin-left: 18px;
-  }
-  .edit-btn {
-    display: flex;
-    justify-content: center;
-  }
   .btn-04 {
     display: flex;
     width: 150px;
-    right: 122px;
   }
 
   .detail-title-03 {
@@ -56,9 +45,8 @@
     background: none;
     border: none;
     font-size: 1.7rem;
-    font-family: "Kalam", cursive;
-    text-align: left;
-    font-weight: 400;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
     cursor: pointer;
     color: black;
     transition: 0.8s;
@@ -99,11 +87,11 @@
   }
   .update-btn {
     top: 30px;
-    left: 80px;
+    left: 50px;
   }
 
   .arrow-btn {
-    right: 100px;
+    left: -75px;
   }
 }
 
@@ -114,16 +102,6 @@
     /* background-image: linear-gradient(#fff 30%, #f6d9d2) !important; */
     margin-left: 14%;
     margin-bottom: 100px;
-  }
-
-  .img-box-03 {
-    text-align: center;
-    padding: 0;
-    background-image: linear-gradient(#fff 30%, #f6d9d2, #fff) !important;
-  }
-
-  .parfum-img {
-    border-radius: 30%;
   }
 
   .detail-title-03 {
@@ -201,9 +179,14 @@
   }
 
   .update-btn {
-    font-size: 2rem;
-    width: 120px;
-    top: 1800px;
-    left: 850px;
+    font-size: 2rem !important;
+    height: fit-content;
+    width: 160px;
+    top: 1780px;
+    left: 860px !important;
+  }
+
+  .arrow-btn {
+    right: 1200px;
   }
 }

@@ -1,14 +1,7 @@
 import React from "react";
 import axios from "axios";
-import SuccessAdded from "../components/SuccessAdded";
-import {
-  BiArrowBack,
-  BiCategory,
-  BiHappyHeartEyes,
-  BiLike,
-  BiSearch,
-  BiFilterAlt,
-} from "react-icons/bi";
+import SuccessUpdate from "../components/SuccessUpdate";
+import { BiArrowBack } from "react-icons/bi";
 import "../css/SuccessAdded.css";
 import "../css/UpdateDetailPage.css";
 
@@ -528,7 +521,7 @@ export default class UpdateDetailPage extends React.Component {
             </div>
             <div className="container mt-4 mb-4 pb-4  ">
               <button
-                className="btn btn-04 btn-effect-04 update-btn"
+                className="btn btn-04 btn-effect-04 update-btn sub-title-03"
                 onClick={this.submitUpdate}
               >
                 Update
@@ -536,7 +529,7 @@ export default class UpdateDetailPage extends React.Component {
             </div>
           </div>
         </div>
-        <SuccessAdded
+        <SuccessUpdate
           successAdded={this.state.successAdded}
           closeSuccessAdded={this.closeSuccessAdded}
         />

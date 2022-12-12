@@ -38,3 +38,29 @@
 
 /* mediaquery */
 /* its good to have background colour then fill in the image for desktop only` */
+@media screen and (max-width: 768px) {
+  .hero-sec {
+    padding: 0px;
+  }
+
+  .main-text {
+    font-family: "Kalam", cursive;
+    font-weight: bold;
+    font-size: 3rem;
+  }
+
+  .mainsub-text {
+    font-family: "Kalam", cursive;
+    font-size: 2rem;
+  }
+}
+
+@media screen and(min-width:768px) {
+  .hero-sec {
+    padding: 0px;
+  }
+
+  .hero-img {
+    width: 300px;
+  }
+}

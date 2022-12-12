@@ -59,6 +59,10 @@
   .btn-box {
     width: 165px;
   }
+  #search-filter-box {
+    width: 620px;
+    margin-bottom: 100px;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -66,7 +70,9 @@
     display: flex;
     justify-content: center;
   }
-
+  .btn > .btn-effect {
+    font-size: 1.5rem;
+  }
   .btn-box {
     width: 190px;
   }
@@ -119,11 +125,11 @@
 /* ---------------------------- */
 .btn {
   background: none;
-  font-size: 1.2rem;
-  font-family: "Kalam", cursive;
-  font-weight: 400;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
   cursor: pointer;
-  color: #cc313d;
+  color: black;
   transition: 0.8s;
   position: relative;
   overflow: hidden;

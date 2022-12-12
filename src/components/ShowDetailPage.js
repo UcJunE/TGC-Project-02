@@ -1,12 +1,7 @@
 import React from "react";
-import {
-  BiArrowBack,
-  BiCategory,
-  BiHappyHeartEyes,
-  BiLike,
-  BiSearch,
-  BiFilterAlt,
-} from "react-icons/bi";
+import { BiArrowBack } from "react-icons/bi";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "../css/ShowDetailPage.css";
 
 export default class ShowDetailPage extends React.Component {
@@ -46,7 +41,7 @@ export default class ShowDetailPage extends React.Component {
     return (
       <React.Fragment>
         <button
-          className="container btn-03 btn-effect-03 btn-04 fd-flex"
+          className=" btn-03 btn-effect-03 btn-04"
           onClick={() => {
             this.props.changeToProfilePage();
           }}
@@ -128,7 +123,7 @@ export default class ShowDetailPage extends React.Component {
             </div>
             <div className="container mb-3 edit-btn">
               <button
-                className="btn btn-03 btn-effect-03 mx-5 edit-del-btn"
+                className="btn btn-03 btn-effect-03 mx-5 sub-title-03"
                 onClick={() => {
                   this.props.changeToUpdatePage(r);
                 }}
@@ -137,7 +132,7 @@ export default class ShowDetailPage extends React.Component {
               </button>
 
               <button
-                className="btn btn-03 btn-effect-03 mx-5 edit-del-btn"
+                className="btn btn-03 btn-effect-03 mx-5  sub-title-03"
                 onClick={() => {
                   console.log(r._id);
                   this.props.deletePost(r._id);
@@ -147,7 +142,18 @@ export default class ShowDetailPage extends React.Component {
                 Delete
               </button>
             </div>
-            <hr />
+            <ToastContainer
+              position="top-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+            />
           </div>
         ))}
       </React.Fragment>

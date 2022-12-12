@@ -14,7 +14,11 @@
     color: red; /* old IE */
     background-color: red; /* Modern Browsers */
   }
-
+  .sub-title-04 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+  }
   .type-box-03 {
     display: flex;
   }
@@ -32,7 +36,7 @@
   .btn-04 {
     display: flex;
     width: 150px;
-    right: 122px;
+    left: 20px;
   }
 
   .detail-title-03 {
@@ -56,13 +60,13 @@
     background: none;
     border: none;
     font-size: 1.7rem;
-    font-family: "Kalam", cursive;
-    text-align: left;
+    font-family: "Montserrat", sans-serif;
     font-weight: 400;
     cursor: pointer;
     color: black;
     transition: 0.8s;
     position: relative;
+    width: 300px;
     overflow: hidden;
   }
 
@@ -137,6 +141,11 @@
     font-weight: 700;
     font-size: 2rem;
   }
+  .sub-title-04 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+  }
 
   .sub-text-03 {
     font-family: "Kalam", cursive;
@@ -147,15 +156,15 @@
     background: none;
     font-size: 1.5rem;
     font-weight: 700;
-    font-family: "Kalam", cursive;
+    font-family: "Montserrat", sans-serif;
     text-align: left;
-    font-weight: 400;
+    font-weight: 600 !important;
     cursor: pointer;
     color: black;
     transition: 0.8s;
     position: relative;
     overflow: hidden;
-    width: 100px;
+    width: 140px;
     left: 420px;
   }
 
@@ -191,9 +200,11 @@
     font-size: 1.7rem;
   }
   .btn-04 {
-    display: flex;
     width: 170px;
     top: 150px;
+    left: 260px !important;
+    font-weight: 600 !important;
+    font-family: "Montserrat", sans-serif !important;
   }
 
   .edit-del-btn {

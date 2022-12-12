@@ -1,13 +1,6 @@
 import React from "react";
-import { GiBrandyBottle, GiDelicatePerfume } from "react-icons/gi";
-import {
-  BiArrowBack,
-  BiCategory,
-  BiHappyHeartEyes,
-  BiLike,
-  BiSearch,
-  BiFilterAlt,
-} from "react-icons/bi";
+
+import { BiArrowBack } from "react-icons/bi";
 import "../css/SingleDetailPage.css";
 
 export default class SingleDetailPage extends React.Component {
@@ -46,7 +39,7 @@ export default class SingleDetailPage extends React.Component {
 
         {this.props.detailSearchId.map((r) => (
           <div className="main-box-02" key={r._id}>
-            <div className="container img-box mt-3 img-fluid">
+            <div className="container img-box-03 mt-3 img-fluid">
               <img
                 className="parfum-img"
                 src={r.picUrl}
@@ -79,7 +72,7 @@ export default class SingleDetailPage extends React.Component {
                 </div>
                 <div className="container mb-3 sub-text-03">{r.type}</div>
                 <div className="container sub-title">
-                  <h4 className="sub-text-03">Year</h4>
+                  <h4 className="sub-title-03">Year</h4>
                 </div>
                 <div className="container mb-3 sub-text-03">{r.yearLaunch}</div>
               </div>

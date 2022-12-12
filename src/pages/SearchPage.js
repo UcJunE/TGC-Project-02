@@ -37,6 +37,8 @@ export default class SearchPage extends React.Component {
     detailSearchId: null,
     detailSearchPressed: false,
     singlePerfumeObject: [],
+
+    showNoResult: false,
   };
 
   isLoading = () => {
@@ -112,10 +114,20 @@ export default class SearchPage extends React.Component {
           rating: this.state.rating,
         },
       });
-      this.setState({
-        data: response.data,
-        isFilterOpen: false,
-      });
+      let data = response.data;
+      if (!data.length) {
+        this.setState({
+          data: data,
+          isFilterOpen: false,
+          showNoResult: true,
+        });
+      } else {
+        this.setState({
+          data: response.data,
+          isFilterOpen: false,
+          showNoResult: false,
+        });
+      }
       console.log(response.data);
     } catch (e) {
       console.log(e);
@@ -196,14 +208,19 @@ export default class SearchPage extends React.Component {
                   </button>
                 </div>
               </div>
+              {this.state.showNoResult ? (
+                <p className="err-msg ms-3">No search results</p>
+              ) : (
+                ""
+              )}
               <div
-                id="searchFiltersBox"
+                id="search-filter-box"
                 className={
                   this.state.isFilterOpen ? "showFilters" : "hideFilters"
                 }
               >
                 <div className="container">
-                  <h5>Brand</h5>
+                  <h5 className="sub-title-03">Brand</h5>
                   <select
                     className="form-select inputbox"
                     name="brand"
@@ -221,7 +238,7 @@ export default class SearchPage extends React.Component {
                   </select>
                 </div>
                 <div className="container mt-3">
-                  <h5>Type</h5>
+                  <h5 className="sub-title-03">Type</h5>
                   <div className="form-check form-check-inline">
                     <input
                       className="form-check-input"
@@ -232,7 +249,9 @@ export default class SearchPage extends React.Component {
                       checked={this.state.sortBy === "Natural"}
                       onChange={this.updateFormField}
                     />
-                    <label className="form-check-label">Natural</label>
+                    <label className="form-check-label sub-title-04">
+                      Natural
+                    </label>
                   </div>
                   <div className="form-check form-check-inline">
                     <input
@@ -244,11 +263,13 @@ export default class SearchPage extends React.Component {
                       checked={this.state.sortBy === "Synthetic"}
                       onChange={this.updateFormField}
                     />
-                    <label className="form-check-label">Synthetic</label>
+                    <label className="form-check-label sub-title-04">
+                      Synthetic
+                    </label>
                   </div>
                 </div>
                 <div className="container mt-3">
-                  <h5>Scent</h5>
+                  <h5 className="sub-title-03">Scent</h5>
                   <select
                     className="form-select inputbox"
                     name="scent"
@@ -264,7 +285,7 @@ export default class SearchPage extends React.Component {
                   </select>
                 </div>
                 <div className="container mt-3">
-                  <h5>Rating</h5>
+                  <h5 className="sub-title-03">Rating</h5>
                   <select
                     className="form-select inputbox"
                     name="rating"
@@ -282,10 +303,10 @@ export default class SearchPage extends React.Component {
 
                 <div>
                   <button
-                    className="mt-3 btn btn-effect"
+                    className="mt-2 btn btn-effect sub-title-03"
                     onClick={this.filterSearch}
                   >
-                    Submit
+                    Search
                   </button>
                 </div>
               </div>

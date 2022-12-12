@@ -1,14 +1,5 @@
 import React from "react";
 import axios from "axios";
-import { GiBrandyBottle, GiDelicatePerfume } from "react-icons/gi";
-import {
-  BiUser,
-  BiCategory,
-  BiHappyHeartEyes,
-  BiLike,
-  BiSearch,
-  BiFilterAlt,
-} from "react-icons/bi";
 import SuccessAdded from "../components/SuccessAdded";
 import "../css/CreateNewPage.css";
 
@@ -214,7 +205,9 @@ export default class CreatNewPage extends React.Component {
         <div className="container py-3" id="main-container">
           <div className="container" id="detail-container">
             <div className="container mt-3 py-4 title">
-              <h3 className="container detail-title-03 ">Tell Us About Your Perfume </h3>
+              <h3 className="container detail-title-03 ">
+                Tell Us About Your Perfume{" "}
+              </h3>
             </div>
             <div className="container mt-3">
               <h3 className="sub-title-03">Perfume Name</h3>
@@ -279,7 +272,7 @@ export default class CreatNewPage extends React.Component {
                   onChange={this.updateFormField}
                 />
 
-                <label className="form-check-label sub-text-03">Natural</label>
+                <label className="form-check-label sub-title-04">Natural</label>
               </div>
               <div className="form-check form-check-inline">
                 <input
@@ -292,7 +285,9 @@ export default class CreatNewPage extends React.Component {
                   onChange={this.updateFormField}
                 />
 
-                <label className="form-check-label sub-text-03">Synthetic</label>
+                <label className="form-check-label sub-title-04">
+                  Synthetic
+                </label>
               </div>
               {this.state.showTypeError ? (
                 <p className="err-msg">Please select either one</p>
@@ -493,7 +488,10 @@ export default class CreatNewPage extends React.Component {
               </div>
             </div>
             <div className="container mt-4 mb-4 pb-4  ">
-              <button className="btn btn-effect sub-title-03" onClick={this.addNewSubmit}>
+              <button
+                className="btn btn-effect sub-title-03"
+                onClick={this.addNewSubmit}
+              >
                 Submit
               </button>
             </div>
