@@ -17,3 +17,9 @@ Love Potion is a web application that aims to be a platform where  perfume lover
 As someone who love the fragrance of the perfume , prior to having no knowledge about the perfume and there is a lot of perfume around the world to choose on . Therefore a centralized informational site would be beneficial where people can share their experience and thought on the perfume will help greatly with perfume choices.
 
 #### User Goals
+The aim of this project is to let users get to know more about perfume .Whereby user are able to contribute their own perfume to promote their own perfume to be shared among with the Love Potion community.
+
+|User Stories | 
+
+
+
