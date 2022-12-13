@@ -59,7 +59,8 @@ An Express server is set up and deployed to [Render](https://render.com/), where
 
 ## Test Case
 
-The test cases can be found [here](test-case/test-case.pdf).
+The test cases can be found [here](/screenshots/test-case-01.PNG)
+and also [here](/screenshots/test-case-02.PNG)
 
 ---
 
@@ -69,13 +70,13 @@ The test cases can be found [here](test-case/test-case.pdf).
 
 ![Screenshot of color scheme](/screenshots/color-scheme.PNG)
 
-A mix of pink and violet, dusty rose is a gentle, subdued color. While not overly showy, this particular shade of pink embodies a sense of maturity that allows it to stand on its own while also pairing well with others. 
+A mix of pink and violet, dusty rose is a gentle, subdued color. While not overly showy, this particular shade of pink embodies a sense of maturity that allows it to stand on its own while also pairing well with others.
 
 #### Fonts
 
-*Montserrat* is the font family used for the website as it is clean, geometric sans serif fonts with clean, simple letterforms and relaxed spacing.
+_Montserrat_ is the font family used for the website as it is clean, geometric sans serif fonts with clean, simple letterforms and relaxed spacing.
 
-*kalam*  is a handwriting font family that supports the Devanagari and Latin writing systems that used for the website because as we know perfume is a art , and  the fonts have each been optimized for text usage on screen. All in all, the typeface is a design that feels very personal.
+_kalam_ is a handwriting font family that supports the Devanagari and Latin writing systems that used for the website because as we know perfume is a art , and the fonts have each been optimized for text usage on screen. All in all, the typeface is a design that feels very personal.
 
 ---
 
