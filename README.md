@@ -1,6 +1,6 @@
 # **Love Potion**
 
-![Screenshots of Love's Potion homepage](/screenshots/Project-02.PNG)
+![Screenshots of Love's Potion homepage](/screenshots/lovePotion-ScreenShoot.PNG)
 
 Link to demo : [Love's Potion](https://tgc-love-potion.netlify.app/)
 
