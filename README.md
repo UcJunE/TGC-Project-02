@@ -1,12 +1,16 @@
 # **Love Potion**
 
-reserve for link demo
+![Screenshots of Love's Potion homepage](/screenshots/Project-02.PNG)
+
+Link to demo : [Love's Potion](https://tgc-love-potion.netlify.app/)
 
 ## Summary
 
 Fragrance brings intangible value to our lives: a memory-evoking perfume; the comforting feeling from fresh-smelling laundry; the sense of cleanliness offered by a fragranced shower gel.
 
 Love Potion is a web application that aims to be a platform where perfume lover can share their personal opinion regarding on their preference perfume .
+
+---
 
 ## UI/UX
 
@@ -19,6 +23,19 @@ As someone who love the fragrance of the perfume , prior to having no knowledge 
 #### User Goals
 
 The aim of this project is to let users get to know more about perfume .Whereby user are able to contribute their own perfume to promote their own perfume to be shared among with the Love Potion community.
+
+---
+
+#### Database
+![ERD Diagram](/screenshots/erd-diagram.PNG)
+
+Entity-Relationship Diagram (ERD) is drawn to demostrate the various relationships between entities for the website prior to modelling the database in MongoDB.
+
+An Express server is set up and deployed to [Render](https://render.com/), where API endpoints are accessible via the base URL at [https://ucjune-project02-database.onrender.com](https://ucjune-project02-database.onrender.com).
+
+#### Sitemap
+![Sitemap](/screenshots/Project-02-SiteMap.PNG)
+
 
 | User Stories                                                                                       | Accceptance Criteria                                                                                                        |
 | -------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
@@ -125,6 +142,8 @@ The test cases can be found [here](test-case/test-case.pdf).
 
 2. [React-Icon](https://react-icons.github.io/react-icons/) - Used for beautiful icons of website
 
+3. [Flaticon]("https://www.flaticon.com/free-icons/perfume") - Used for Icon on the browser
+ 
 ### Pop up :
 
 1. [React-Tostify](https://fkhadra.github.io/react-toastify/introduction) - Used for beautiful Pop up of website
