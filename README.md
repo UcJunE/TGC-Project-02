@@ -27,6 +27,7 @@ The aim of this project is to let users get to know more about perfume .Whereby 
 ---
 
 #### Database
+
 ![ERD Diagram](/screenshots/erd-diagram.PNG)
 
 Entity-Relationship Diagram (ERD) is drawn to demostrate the various relationships between entities for the website prior to modelling the database in MongoDB.
@@ -34,8 +35,8 @@ Entity-Relationship Diagram (ERD) is drawn to demostrate the various relationshi
 An Express server is set up and deployed to [Render](https://render.com/), where API endpoints are accessible via the base URL at [https://ucjune-project02-database.onrender.com](https://ucjune-project02-database.onrender.com).
 
 #### Sitemap
-![Sitemap](/screenshots/Project-02-SiteMap.PNG)
 
+![Sitemap](/screenshots/Project-02-SiteMap.PNG)
 
 | User Stories                                                                                       | Accceptance Criteria                                                                                                        |
 | -------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
@@ -51,7 +52,7 @@ An Express server is set up and deployed to [Render](https://render.com/), where
 | ------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
 | Current result display only shows very simple version of perfume attribute                  | Provide more information regarding the perfume                    |
 | Intended to implement product review on perfume but cant complete it due to time constraint | Create a dynamic review form to let user interact with each other |
-| No authentication for login credential                                                      | Incorporate with authentication package like JTW token etc.       |
+| No authentication for login credential                                                      | Incorporate with authentication package like JWT token etc.       |
 | Visual design is not attractive and friendly enough                                         | Implement more graphic impact like animation to catch user's eye  |
 
 ---
@@ -59,6 +60,22 @@ An Express server is set up and deployed to [Render](https://render.com/), where
 ## Test Case
 
 The test cases can be found [here](test-case/test-case.pdf).
+
+---
+
+### Design Decisions
+
+#### Color scheme
+
+![Screenshot of color scheme](/screenshots/color-scheme.PNG)
+
+A mix of pink and violet, dusty rose is a gentle, subdued color. While not overly showy, this particular shade of pink embodies a sense of maturity that allows it to stand on its own while also pairing well with others. 
+
+#### Fonts
+
+*Montserrat* is the font family used for the website as it is clean, geometric sans serif fonts with clean, simple letterforms and relaxed spacing.
+
+*kalam*  is a handwriting font family that supports the Devanagari and Latin writing systems that used for the website because as we know perfume is a art , and  the fonts have each been optimized for text usage on screen. All in all, the typeface is a design that feels very personal.
 
 ---
 
@@ -143,14 +160,16 @@ The test cases can be found [here](test-case/test-case.pdf).
 2. [React-Icon](https://react-icons.github.io/react-icons/) - Used for beautiful icons of website
 
 3. [Flaticon]("https://www.flaticon.com/free-icons/perfume") - Used for Icon on the browser
- 
+
+4. [Lottiefiles](https://lottiefiles.com/) - Adapted CSS spinner for use in website
+
 ### Pop up :
 
 1. [React-Tostify](https://fkhadra.github.io/react-toastify/introduction) - Used for beautiful Pop up of website
 
 ### Background Image :
 
-1. [Beautiful-Image Photo by Dids:](https://www.pexels.com/photo/clear-glass-perfume-bottle-1190829/) - Used for styling the Hero Section
+1. [Beautiful Png Image](https://www.pngarts.com/explore/104802) - Used for styling the Hero Section
 
 ## Deployment
 
