@@ -30,12 +30,12 @@ The aim of this project is to let users get to know more about perfume .Whereby 
 
 ## Limitations and Future Implementations
 
-| Limitations                                                  | Future Implementations                                                                                                               |
-| ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| Current result display only shows very simple version of perfume attribute | Provide more information regarding the perfume                  |
-| Intended to implement product review on perfume but cant complete it due to time constraint                   | Create a dynamic review form to let user interact with each other  |
-| No authentication for login credential                    |       Incorporate with authentication package like JTW token etc.                                                                                    |
-| Visual design is not attractive and friendly enough          | Implement more graphic impact like animation to catch user's eye                                                                     |
+| Limitations                                                                                 | Future Implementations                                            |
+| ------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| Current result display only shows very simple version of perfume attribute                  | Provide more information regarding the perfume                    |
+| Intended to implement product review on perfume but cant complete it due to time constraint | Create a dynamic review form to let user interact with each other |
+| No authentication for login credential                                                      | Incorporate with authentication package like JTW token etc.       |
+| Visual design is not attractive and friendly enough                                         | Implement more graphic impact like animation to catch user's eye  |
 
 ---
 
@@ -123,9 +123,15 @@ The test cases can be found [here](test-case/test-case.pdf).
 
 1. [Font Awesome](https://fontawesome.com/) - Used in tabs and buttons of website
 
-2. [Flaticon](https://www.flaticon.com/) - Used in map marker icons of website
+2. [React-Icon](https://react-icons.github.io/react-icons/) - Used for beautiful icons of website
 
----
+### Pop up :
+
+1. [React-Tostify](https://fkhadra.github.io/react-toastify/introduction) - Used for beautiful Pop up of website
+
+### Background Image :
+
+1. [Beautiful-Image Photo by Dids:](https://www.pexels.com/photo/clear-glass-perfume-bottle-1190829/) - Used for styling the Hero Section
 
 ## Deployment
 

@@ -6,13 +6,13 @@ export default class LandingPage extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className="container-fluid hero-sec">
+        <div className="container-fluid hero-sec row">
           <img
-            className="img-fluid"
-            src={require("../images/bg-2.png")}
+            className="img-fluid col-lg-6 col-md-12 col-sm-12 hero-img mb-3 mt-3"
+            src={require("../images/bg-04.png")}
             alt="background-img"
           />
-          <div className="card-body">
+          <div className="card-body col-lg-6 col-md-12 col-sm-12 hero-content">
             <h1 className="card-title main-text">Perfect Balance of Passion</h1>
             <h2 className="card-text mainsub-text">Passion&Smell</h2>
             <h3 className="card-text mainsub-text">
@@ -20,13 +20,13 @@ export default class LandingPage extends React.Component {
             </h3>
           </div>
           <div className="container">
-            <button class="btn btn-custom">Sign Up</button>
-            <button href="#" class="btn btn-custom">
+            <button className="btn btn-custom">Sign Up</button>
+            <button href="#" className="btn btn-custom">
               Begin
             </button>
           </div>
           <div className="container">
-            <p class="text">Stay in touch with our community</p>
+            <p className="text">Stay in touch with our community</p>
             <BsFacebook /> <BsInstagram /> <BsTwitter /> <BsTelegram />
           </div>
         </div>

@@ -1,4 +1,3 @@
-import react from "react";
 import loading from "./loading.json";
 import Lottie from "lottie-react";
 
@@ -7,4 +6,3 @@ const Loading = () => {
 };
 
 export default Loading;
-    

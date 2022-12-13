@@ -41,6 +41,7 @@
 @media screen and (max-width: 768px) {
   .hero-sec {
     padding: 0px;
+    margin: 0px;
   }
 
   .main-text {
@@ -49,9 +50,18 @@
     font-size: 3rem;
   }
 
+  .hero-img {
+    padding: 0px;
+    padding: 0px;
+  }
+
   .mainsub-text {
     font-family: "Kalam", cursive;
     font-size: 2rem;
+  }
+
+  .hero-content {
+    width: 300px;
   }
 }
 
