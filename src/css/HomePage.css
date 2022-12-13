@@ -45,9 +45,81 @@
   }
 
   .main-text {
+    padding: 30px;
+    padding-bottom: 60px;
     font-family: "Kalam", cursive;
     font-weight: bold;
     font-size: 3rem;
+    text-align: center;
+  }
+
+  .hero-img {
+    padding: 0px;
+    padding: 0px;
+  }
+
+  .mainsub-text {
+    display: none;
+    font-family: "Kalam", cursive;
+    font-size: 2rem;
+    text-align: center;
+  }
+  .mainsub-text-02 {
+    font-family: "Kalam", cursive;
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .hero-content {
+    width: 300px;
+  }
+
+  .btn-custom {
+    text-align: center;
+    margin-left: 40px;
+  }
+
+  .text-connect {
+    text-align: center;
+    font-family: "Kalam", cursive;
+    font-size: 1.3rem;
+    text-align: center;
+    margin-top: 80px;
+  }
+  .text-logo {
+    font-size: 1.5em;
+    margin-top: 15px;
+    margin-left: 25px;
+    margin-right: 40px;
+  }
+
+  .text-logo:hover {
+    color: #cf6d54;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .hero-sec {
+    padding: 0px;
+    margin: 0px;
+  }
+  .landing-btn {
+    top: 600px !important;
+    margin-left: 1000px;
+  }
+
+  .landing-btn-02 {
+    top: 600px !important;
+    margin-left: 1200px;
+  }
+
+  .main-text {
+    padding: 30px;
+    padding-bottom: 60px;
+    font-family: "Kalam", cursive;
+    font-weight: bold;
+    font-size: 3rem;
+    text-align: center;
   }
 
   .hero-img {
@@ -57,20 +129,47 @@
 
   .mainsub-text {
     font-family: "Kalam", cursive;
+    padding-left: 50px;
+    padding-right: 50px;
     font-size: 2rem;
+    text-align: center;
+  }
+  .mainsub-text-02 {
+    font-family: "Kalam", cursive;
+    font-size: 2rem;
+    text-align: center;
   }
 
   .hero-content {
     width: 300px;
   }
-}
 
-@media screen and(min-width:768px) {
-  .hero-sec {
-    padding: 0px;
+  .btn-custom {
+    text-align: center;
+    margin-left: 40px;
   }
 
-  .hero-img {
-    width: 300px;
+  .text-connect {
+    text-align: center;
+    font-family: "Kalam", cursive;
+    font-size: 1.7rem;
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 30px;
+  }
+  .text-logo {
+    font-size: 2rem;
+    margin-top: 15px;
+    margin-left: 25px;
+    margin-right: 40px;
+  }
+
+  .text-logo:hover {
+    color: #cf6d54;
+  }
+
+  #logo-box {
+    padding: 100px;
+    text-align: center;
   }
 }

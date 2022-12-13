@@ -17,11 +17,11 @@ export default class HomePage extends React.Component {
     if (this.state.active === "searchPage") {
       return <SearchPage />;
     } else if (this.state.active === "createNewPage") {
-      return <CreatNewPage />;
+      return <CreatNewPage switchPage={this.switchPage} />;
     } else if (this.state.active === "profile") {
       return <Profile />;
     } else if (this.state.active === "landingPage") {
-      return <LandingPage />;
+      return <LandingPage switchPage={this.switchPage} />;
     }
   };
 

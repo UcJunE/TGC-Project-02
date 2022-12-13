@@ -11,10 +11,7 @@ export default function ProcessAddNew(props) {
           <div className="modal-header">
             <div className="modal-title d-flex justify-content-center">
               <h4>Successfully Added</h4>
-              <button
-                className="btn btn-sm"
-                onClick={props.closeSuccessAdded}
-              >
+              <button className="btn btn-sm" onClick={props.closeSuccessAdded}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="22"

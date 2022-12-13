@@ -68,25 +68,6 @@ export default class Profile extends React.Component {
     this.setState({ currentPage: "update", currentId: r });
   };
 
-  deleteCurrentPost = async (r) => {
-    console.log(r);
-    await axios.delete(this.BASE_API_URL + "delete-perfume/" + r);
-    const notifyDelete = () =>
-      toast.success("Your collection is deleted !", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-    notifyDelete();
-    console.log(" ITS DELETED");
-    this.setState({ currentPage: "showDetail", data: this.state.data });
-  };
-
   // to search document via the email that createdby
   searchUserPerfume = async () => {
     if (this.state.userEmail) {
@@ -102,7 +83,7 @@ export default class Profile extends React.Component {
 
         if (!data.length) {
           this.setState({ data: data, showEmailError: true, userEmail: "" });
-          console.log("No data founded");
+          console.log("No data found");
         } else {
           this.setState({
             data: data,
@@ -118,8 +99,28 @@ export default class Profile extends React.Component {
         console.log(e);
       }
     } else {
-      this.setState({ showNoResult: true });
+      this.setState({ showNoResult: true, showEmailError: true });
     }
+  };
+
+  deleteCurrentPost = async (r) => {
+    console.log(r);
+    await axios.delete(this.BASE_API_URL + "delete-perfume/" + r);
+    const notifyDelete = () =>
+      toast.success("Your collection is deleted !", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    notifyDelete();
+    this.searchUserPerfume();
+    console.log(" ITS DELETED");
+    this.setState({ currentPage: "showDetail", data: this.state.data });
   };
 
   renderPage = () => {
